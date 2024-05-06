@@ -8,12 +8,12 @@ package Controller;
 import Action.AuthentifierUtilisateurAction;
 import Serialisation.ProfilUtilisateurSerialisation;
 import java.io.IOException;
-import javax.enterprise.inject.New;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import metier.service.ServiceManager;
 
 /**
  *
@@ -34,6 +34,7 @@ public class ActionServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        ServiceManager service = new ServiceManager();
         // ServiceManager service = New ServiceManager();
         String todo = request.getParameter("todo");
 
