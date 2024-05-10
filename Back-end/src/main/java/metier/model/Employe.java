@@ -104,6 +104,9 @@ public class Employe {
     public String getNumTel() {
         return numTel;
     }
+
+    public Boolean getDisponible() {
+        return disponible;
+    }
    
-    
 }
