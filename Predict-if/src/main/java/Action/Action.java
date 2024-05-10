@@ -7,6 +7,7 @@
  */
 package Action;
 
+import java.text.ParseException;
 import javax.servlet.http.HttpServletRequest;
 import metier.service.ServiceManager;
 
@@ -21,6 +22,6 @@ public abstract class Action {
         this.service = service;
     }
     
-    public  abstract void execute(HttpServletRequest request);
+    public  abstract void execute(HttpServletRequest request) throws ParseException;
     
 }
