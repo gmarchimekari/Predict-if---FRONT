@@ -18,6 +18,20 @@ function verifierFormulaire() {
     return false;
   }
 
+  // Vérification de l'adresse mail
+  var mailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!mailRegex.test(mail)) {
+    alert("L'adresse mail n'est pas valide.");
+    return false;
+  }
+
+  // vérification du numéro de téléphone
+  var phoneRegex = /^[0-9]{10}$/;
+  if (!phoneRegex.test(numeroTel)) {
+    alert("Le numéro de téléphone n'est pas valide.");
+    return false;
+  }
+
   // Transformation de la date de naissance en format jour/mois/année
   var formattedDate =
     selectedDate.getDate() +
