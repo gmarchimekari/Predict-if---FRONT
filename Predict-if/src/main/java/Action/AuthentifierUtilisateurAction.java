@@ -6,6 +6,8 @@
 package Action;
 
 import javax.servlet.http.HttpServletRequest;
+import metier.model.Client;
+import metier.model.Employe;
 import metier.service.ServiceManager;
 
 /**
@@ -22,17 +24,19 @@ public class AuthentifierUtilisateurAction extends Action {
     @Override
     public void execute(HttpServletRequest request){
         
-        //ServiceManager service = new ServiceManager();
-        TestUtilisateur lovelace = new TestUtilisateur("1024", "Lovelace", "Ada", "ada.lovelace@insa-lyon.fr");
         String login = (String) request.getParameter("login");
         String password = (String) request.getParameter("password");
         
-        if(!login.equals(lovelace.getMail())) {
-            lovelace = null;
-        }
-        System.out.println(lovelace);
-        request.setAttribute("Utilisateur", lovelace);
+        Client client = service.authentifierClient(login, password);
+        Employe employe = service.authentifierEmploye(login, password);
         
+        if(client != null) {
+            request.setAttribute("Utilisateur", client);
+        } else if(employe != null) {
+            request.setAttribute("Utilisateur", employe);
+        } else {
+            request.setAttribute("Utilisateur", null);
+        }
     }
     
 }
