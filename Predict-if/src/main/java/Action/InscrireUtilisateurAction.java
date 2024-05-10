@@ -29,7 +29,7 @@ public class InscrireUtilisateurAction extends Action {
         String prenom = (String) request.getParameter("prenom");
         
         String dateNaissanceString = (String) request.getParameter("dateNaissance");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date dateNaissance = dateFormat.parse(dateNaissanceString);
         
         String rue = (String) request.getParameter("rue");
@@ -47,8 +47,10 @@ public class InscrireUtilisateurAction extends Action {
         
         if (result){
             request.setAttribute("client", client);
+            System.out.println("inscription ok");
         } else {
             request.setAttribute("client", null);
+            System.out.println("inscription pas ok");
         }
         
         

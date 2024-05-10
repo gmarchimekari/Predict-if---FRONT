@@ -36,6 +36,7 @@ import util.Message;
  */
 public class ServiceManager {
     public Boolean inscrireClient(Client client){
+        System.out.println(client);
         ClientDao clientDao = new ClientDao();
         Boolean result = null;
         try { 

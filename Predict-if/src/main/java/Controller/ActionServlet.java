@@ -6,8 +6,12 @@ package Controller;
  * and open the template in the editor.
  */
 import Action.AuthentifierUtilisateurAction;
+import Action.InscrireUtilisateurAction;
 import Serialisation.ProfilUtilisateurSerialisation;
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +36,7 @@ public class ActionServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
         
         ServiceManager service = new ServiceManager();
         // ServiceManager service = New ServiceManager();
@@ -42,11 +46,20 @@ public class ActionServlet extends HttpServlet {
         System.out.println("Parametre todo est " + todo);
         switch(todo) {
             case "connecter":
+                System.out.println("je futdytfyufhahha");
                 new AuthentifierUtilisateurAction(service).execute(request);
                 new ProfilUtilisateurSerialisation().serialise(request, response);
                 break;
-            case "incrire":
+                
+            case "inscrire":
+                System.out.println("je suis la hyfutdytfyufhahha");
+                new InscrireUtilisateurAction(service).execute(request);
+                new ProfilUtilisateurSerialisation().serialise(request, response);
                 break;
+            
+            default:
+                System.out.println("je suis la hahahha");
+                break; 
         } 
 
     }
@@ -63,7 +76,11 @@ public class ActionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ActionServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -77,7 +94,11 @@ public class ActionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ActionServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
