@@ -27,9 +27,9 @@ public class ProfilUtilisateurSerialisation extends Serialisation{
         JsonObject container = new JsonObject();
         Gson gsonBuilder = new GsonBuilder().create();
         if(request.getAttribute("Utilisateur") == null) {
-            container.addProperty("connexion", false); 
+            container.addProperty("operationOk", false); 
             container.add("utilisateur", null);
-            container.add("type_utilisateur", null);
+            container.add("typeUtilisateur", null);
         } else if(request.getAttribute("Utilisateur") instanceof Client) {
             Client client = (Client) request.getAttribute("Utilisateur");
             JsonObject jsonUser = new JsonObject(); 
@@ -55,8 +55,8 @@ public class ProfilUtilisateurSerialisation extends Serialisation{
             jsonUser.add("profilAstral", jsonAstral);
             
             gsonBuilder.toJson(jsonUser);
-            container.addProperty("connexion", true);
-            container.addProperty("type_utilisateur", "client");
+            container.addProperty("operationOk", true);
+            container.addProperty("typeUtilisateur", "client");
             container.add("utilisateur", jsonUser);
         } else if(request.getAttribute("Utilisateur") instanceof Employe) {
             Employe employe = (Employe) request.getAttribute("Utilisateur");
@@ -71,15 +71,10 @@ public class ProfilUtilisateurSerialisation extends Serialisation{
             jsonUser.addProperty("numTel", employe.getNumTel());
             
             gsonBuilder.toJson(jsonUser);
-            container.addProperty("connexion", true);
-            container.addProperty("type_utilisateur", "employe");
+            container.addProperty("operationOk", true);
+            container.addProperty("typeUtilisateur", "employe");
             container.add("utilisateur", jsonUser);
         }
-         
-       
-        
-        
-        
 
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();
