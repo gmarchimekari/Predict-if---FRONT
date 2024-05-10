@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inscrption</title>
+    <!-- Librairie Javascript: jQuery (v3.4.1) -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+  <body>
+    <h1>Formulaire d'inscription</h1>
+
+    <form id="formulaire-inscription">
+      <label for="champ-nom">NOM</label>
+      <input type="text" id="champ-nom" name="nom" placeholder="DOE" />
+      <br />
+      <label for="champ-prenom">PRENOM</label>
+      <input type="text" id="champ-prenom" name="prenom" placeholder="John" />
+      <br />
+      <label for="champ-date-naissance">Date de Naissance</label>
+      <input
+        type="date"
+        id="champ-date-naissance"
+        name="dateNaissance"
+        value="2022-09-20"
+      />
+      <br />
+      <label for="champ-rue">Rue</label>
+      <input
+        type="text"
+        id="champ-rue"
+        name="rue"
+        placeholder="12 Rue du Chêne"
+      />
+      <br />
+      <label for="champ-ville">Ville</label>
+      <input
+        type="text"
+        id="champ-ville"
+        name="ville"
+        placeholder="VILLEURBANNE"
+      />
+      <br />
+      <label for="champ-numero-tel">N° Téléphone</label>
+      <input
+        type="text"
+        id="champ-numero-tel"
+        name="numeroTel"
+        placeholder="07 62 31 24 00"
+      />
+      <br />
+      <label for="champ-mail">Mail</label>
+      <input
+        type="email"
+        id="champ-mail"
+        name="mail"
+        placeholder="john.doe@insa-lyon.fr"
+      />
+      <br />
+      <label for="champ-mot-de-passe">Mot de passe</label>
+      <input
+        type="password"
+        id="champ-mot-de-passe"
+        name="motDePasse"
+        placeholder="*********"
+      />
+      <br />
+      <label for="champ-confirmation-mot-de-passe">Confirmation</label>
+      <input
+        type="password"
+        id="champ-confirmation-mot-de-passe"
+        name="confirmationMotDePasse"
+        placeholder="*********"
+      />
+      <br />
+      <button type="submit" id="bouton-inscription" class="button">
+        S'inscrire
+      </button>
+    </form>
+
+    <script src="../code/login.js"></script>
+  </body>
+</html>
