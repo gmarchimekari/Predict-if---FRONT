@@ -1,0 +1,36 @@
+/* #div-liste-voyants {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+} */
+
+#container-menu-client {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#btn-prendre-rendez-vous {
+  width: 50%;
+}
+
+#div-liste-voyants,
+#profil-voyant,
+#container-informations-client {
+  border: solid 1px #000000;
+  border-radius: 5px;
+  border: solid 1px #000000;
+  border-radius: 5px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+#profil-voyant {
+  width: 35%;
+}
+
+#container-informations-client {
+  width: 25%;
+}

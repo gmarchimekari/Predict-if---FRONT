@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Client</title>
+    <link rel="stylesheet" type="text/css" href="../style/menuClient.css" />
+    <link rel="stylesheet" type="text/css" href="../style/index.css" />
+  </head>
+  <body>
+    <h1>Prise de rendez-vous : Votre futur !</h1>
+    <div id="container-menu-client">
+      <div id="div-liste-voyants">
+        <h2>Fais ton choix parmi nos préstigieux voyants :</h2>
+        <ul id="liste-voyants"></ul>
+      </div>
+      <div id="profil-voyant">
+        <div id="container-nom-prenom-voyant">
+          <h2 id="nom-prenom-voyant">Brossat Pierrick</h2>
+          <p id="genre-voyant">Non-bainaire</p>
+        </div>
+        <div id="container-description-voyant">
+          <h2>Support :</h2>
+          <ul id="liste-support-voyant">
+            <li>Cartomancie</li>
+            <li>Chiromancie</li>
+            <li>Boule de crystal</li>
+          </ul>
+        </div>
+        <div id="container-presentation-voyant">
+          <h2>Présentation :</h2>
+          <p id="presentation-voyant">
+            Je suis le meilleur voyant de la région, je suis capable de lire
+            dans les pensées et de prédire l'avenir. Croyez en moi et je vous
+            guiderai vers la lumière.
+          </p>
+        </div>
+
+        <button id="btn-prendre-rendez-vous">Prendre rendez-vous</button>
+      </div>
+      <div id="container-informations-client">
+        <h2>Profil :</h2>
+        <p>Nom</p>
+        <input type="text" id="nom-client" readonly />
+        <p>Prénom</p>
+        <input type="text" id="prenom-client" readonly />
+        <p>Couleur</p>
+        <input type="text" id="couleur-client" readonly />
+        <p>Animal totem</p>
+        <input type="text" id="animal-totem-client" readonly />
+        <p>Signe chinois</p>
+        <input type="text" id="signe-chinois-client" readonly />
+        <p>Signe astrologique</p>
+        <input type="text" id="signe-astrologique-client" readonly />
+        <p>Date de naissance:</p>
+        <input type="date" id="date-naissance-client" readonly />
+        <p>Mail</p>
+        <input type="email" id="mail-client" readonly />
+      </div>
+    </div>
+
+    <script src="../code/menuClient.js"></script>
+  </body>
+</html>
