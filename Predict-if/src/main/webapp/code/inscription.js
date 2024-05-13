@@ -52,7 +52,6 @@ function verifierFormulaire() {
 }
 
 $(document).ready(function () {
-  console.log("inscription.js chargé");
   $("#bouton-inscription").on("click", function () {
     // Fonction appelée lors du clic sur le bouton
 

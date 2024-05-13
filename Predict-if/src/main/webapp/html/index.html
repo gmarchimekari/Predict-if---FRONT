@@ -1,21 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>TD DASI - Initiation Web</title>
-        <!-- Librairie Javascript: jQuery (v3.4.1) -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Accueil</title>
+    <!-- Librairie Javascript: jQuery (v3.4.1) -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- fichier css -->
+    <link rel="stylesheet" type="text/css" href="../style/accueil.css" />
+  </head>
+  <header>
+    <button id="services"><a href="services.html">Nos services</a></button>
+    <button id="mediums"><a href="mediums.html">Nos médiums</a></button>
+    <button id="temoignages"><a href="temoignages.html">Témoignages</a></button>
 
-        <h1>TD DASI - Initiation Web</h1>
+    <div class="dropdown">
+      <button class="dropbtn"><strong>Mon Compte</strong></button>
+      <div class="dropdown-content">
+        <a id="connexion-input" href="connexion.html"
+          >Se connecter / Se déconnecter</a
+        >
+        <a id="profil-astral-input">Voir mon profil astral</a>
+      </div>
+    </div>
+  </header>
+  <body>
+    <div id="div-accueil">
+      <h1>Bienvenue chez Prédict'IF !</h1>
+      <p>Le meilleur service de voyance en ligne !</p>
+      <button id="start-aventure">Commencer l'aventure</button>
+    </div>
 
-        <!-- Paragraphe avec id="notification" pour les messages de notification -->
-        <p id="notification">Ce TD vous initie aux technologies Web. Etes vous prets ?</p>
-        
-        
-        <!-- Lien vers l'accueil -->
-        <p><a href="login.html">Aller a la page de connexion</a></p>
-    </body>
+    <div id="statistics">
+      <p>Des experts reconnus dans le monde entier !</p>
+      <p>Prévision certifiées à 99,7%</p>
+      <p>Des milliers de clients satisfaits</p>
+    </div>
+    <script src="../code/accueil.js"></script>
+  </body>
 </html>
-
