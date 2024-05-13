@@ -5,9 +5,14 @@ package Controller;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Action.AfficherMenuClientAction;
 import Action.AuthentifierUtilisateurAction;
 import Action.InscrireUtilisateurAction;
+import Action.PrendreRDVAction;
+import Serialisation.ConsultationSerialisation;
+import Serialisation.MenuClientSerialisation;
 import Serialisation.ProfilUtilisateurSerialisation;
+import dao.JpaUtil;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -26,6 +31,22 @@ import metier.service.ServiceManager;
 @WebServlet(urlPatterns = {"/ActionServlet"})
 public class ActionServlet extends HttpServlet {
 
+    @Override
+    public void init() throws ServletException {
+        super.init(); //To change body of generated methods, choose Tools | Templates.
+        JpaUtil.creerFabriquePersistance();
+    }
+
+    @Override
+    public void destroy() {
+        super.destroy(); //To change body of generated methods, choose Tools | Templates.
+        JpaUtil.fermerFabriquePersistance();
+    }
+    
+    
+    
+    
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -52,11 +73,26 @@ public class ActionServlet extends HttpServlet {
                 break;
                 
             case "inscrire":
-                System.out.println("je suis la hyfutdytfyufhahha");
+                System.out.println("**************************************  je suis la hyfutdytfyufhahha");
                 new InscrireUtilisateurAction(service).execute(request);
                 new ProfilUtilisateurSerialisation().serialise(request, response);
                 break;
             
+            case "estConnecte":
+                //bqssiufhiu
+                new ProfilUtilisateurSerialisation().serialise(request, response);
+                break;
+                
+            case "menuClient":
+                new AfficherMenuClientAction(service).execute(request);
+                new MenuClientSerialisation().serialise(request, response);
+                break;
+                
+            case "prendreRDV":
+                new PrendreRDVAction(service).execute(request);
+                new ConsultationSerialisation().serialise(request, response);
+                break;
+                
             default:
                 System.out.println("je suis la hahahha");
                 break; 

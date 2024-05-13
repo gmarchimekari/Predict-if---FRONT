@@ -26,11 +26,7 @@ public class ProfilUtilisateurSerialisation extends Serialisation{
     public void serialise (HttpServletRequest request, HttpServletResponse response) throws IOException{
         JsonObject container = new JsonObject();
         Gson gsonBuilder = new GsonBuilder().create();
-        if(request.getAttribute("Utilisateur") == null) {
-            container.addProperty("operationOk", false); 
-            container.add("utilisateur", null);
-            container.add("typeUtilisateur", null);
-        } else if(request.getAttribute("Utilisateur") instanceof Client) {
+        if(request.getAttribute("Utilisateur") instanceof Client) {
             Client client = (Client) request.getAttribute("Utilisateur");
             JsonObject jsonUser = new JsonObject(); 
             jsonUser.addProperty("id", client.getId());
@@ -74,6 +70,10 @@ public class ProfilUtilisateurSerialisation extends Serialisation{
             container.addProperty("operationOk", true);
             container.addProperty("typeUtilisateur", "employe");
             container.add("utilisateur", jsonUser);
+        } else if(request.getAttribute("Utilisateur") == null) {
+            container.addProperty("operationOk", false); 
+            container.add("utilisateur", null);
+            container.add("typeUtilisateur", null);
         }
 
         response.setContentType("application/json;charset=UTF-8");

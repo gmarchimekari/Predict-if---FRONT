@@ -664,4 +664,23 @@ public class ServiceManager {
         }
         return top_list;
     }
+    
+    // ajouter par l'equipe de gab
+    public List<Medium> getAllMediums() {
+        MediumDao mediumDao= new MediumDao();
+        List<Medium> liste_medium = null;
+        List<Medium> top_list = new ArrayList<>();
+
+        try {
+            JpaUtil.creerContextePersistance();
+            liste_medium = mediumDao.findAll();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Erreur trouvé");
+        } finally {
+            JpaUtil.fermerContextePersistance();
+        }
+        return top_list;
+    }
 }

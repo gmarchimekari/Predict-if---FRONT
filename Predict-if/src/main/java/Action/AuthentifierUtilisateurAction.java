@@ -6,6 +6,7 @@
 package Action;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import metier.model.Client;
 import metier.model.Employe;
 import metier.service.ServiceManager;
@@ -24,16 +25,22 @@ public class AuthentifierUtilisateurAction extends Action {
     @Override
     public void execute(HttpServletRequest request){
         
-        String login = (String) request.getParameter("login");
-        String password = (String) request.getParameter("password");
+        String login = (String) request.getParameter("mail");
+        String password = (String) request.getParameter("motDePasse");
         
         Client client = service.authentifierClient(login, password);
         Employe employe = service.authentifierEmploye(login, password);
         
         if(client != null) {
+            HttpSession session = request.getSession(true);
             request.setAttribute("Utilisateur", client);
+            session.setAttribute("UtilisateurId",client.getId());
+
         } else if(employe != null) {
+            HttpSession session = request.getSession(true);
             request.setAttribute("Utilisateur", employe);
+            session.setAttribute("UtilisateurId",employe.getId());
+
         } else {
             request.setAttribute("Utilisateur", null);
         }

@@ -27,6 +27,10 @@ public abstract class Medium {
     private String denomination;
     private Integer nbConsultation = 0 ;
 
+    public Long getId() {
+        return id;
+    }
+    
     public String getGenre() {
         return genre;
     }

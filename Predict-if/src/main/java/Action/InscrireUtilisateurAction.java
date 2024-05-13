@@ -34,7 +34,7 @@ public class InscrireUtilisateurAction extends Action {
         
         String rue = (String) request.getParameter("rue");
         String ville = (String) request.getParameter("ville");
-        String adressePostale = rue + ville;
+        String adressePostale = rue + " " + ville;
         
         String numeroTel = (String) request.getParameter("numeroTel");
         String mail = (String) request.getParameter("mail");
@@ -46,10 +46,10 @@ public class InscrireUtilisateurAction extends Action {
         Boolean result = service.inscrireClient(client);
         
         if (result){
-            request.setAttribute("client", client);
+            request.setAttribute("Utilisateur", client);
             System.out.println("inscription ok");
         } else {
-            request.setAttribute("client", null);
+            request.setAttribute("Utilisateur", null);
             System.out.println("inscription pas ok");
         }
         
