@@ -22,5 +22,10 @@ public class Spirite extends Medium {
         super(genre, presentation, denomination);
         this.support = support;
     }
+
+    public String getSupport() {
+        return support;
+    }
+    
     
 }
