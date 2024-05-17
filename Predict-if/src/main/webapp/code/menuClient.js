@@ -1,16 +1,3 @@
-const tabSupport = [
-  "Marc de café",
-  "Boule de cristal",
-  "Cartomancie",
-  "Chiromancie",
-  "Astrologie",
-  "Numérologie",
-  "Runes",
-  "Pendule",
-  "Oreilles de lapin",
-  "Pierres",
-];
-
 $(document).ready(function () {
   $.ajax({
     url: "./ActionServlet",
@@ -110,7 +97,8 @@ function getInformationmedium(medium) {
 
   if (medium.type == "Spirite") {
     const supportSpirite = $("#support-spirite");
-    supportSpirite.text(`${medium.support}`);
+
+    supportSpirite.text(`Support : ${medium.support}`);
   } else if (medium.type == "Astrologue") {
     const formationAstrologue = $("#formation-astrologue");
     const promotionAstrologue = $("#promotion-astrologue");
@@ -118,8 +106,9 @@ function getInformationmedium(medium) {
     formationAstrologue.text(`${medium.formation}`);
     promotionAstrologue.text(`${medium.promotion}`);
   } else if (medium.type == "Cartomancien") {
-    const cartes = $("#cartes");
-    cartes.text(`${medium.cartes}`);
+    const supportCartomancien = $("#support-cartomancien");
+
+    supportCartomancien.text("Support : Cartes"); // pas d'informations, on ecrit "Cartes" en dur
   }
 
   presentationMedium.text(`${medium.presentation}`);
