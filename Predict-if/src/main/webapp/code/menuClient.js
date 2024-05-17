@@ -67,30 +67,30 @@ $(document).ready(function () {
         window.location.href = "connexion.html";
       }
 
-      //Remplissage de la listes des voyants de la base de données
-      if (response.voyants) {
-        const listeVoyants = $("#liste-voyants");
+      //Remplissage de la listes des mediums de la base de données
+      if (response.mediums) {
+        const listeMediums = $("#liste-mediums");
 
-        response.voyants.forEach((voyant) => {
+        response.mediums.forEach((medium) => {
           const li = $("<li>");
-          // La popularité du voyant est un pourcentage aléatoire entre 95 et 100 %
+          // La popularité du medium est un pourcentage aléatoire entre 95 et 100 %
           const popularite = Math.floor(Math.random() * 6) + 95;
-          const contenuLi = `Nom : ${voyant.denomination} - Type: ${voyant.type}, Popularité: ${popularite}%`;
+          const contenuLi = `Nom : ${medium.denomination} - Type: ${medium.type}, Popularité: ${popularite}%`;
           li.text(contenuLi);
 
-          // Lorsque l'utilisateur clique sur un voyant, on récupère les informations du voyant
+          // Lorsque l'utilisateur clique sur un medium, on récupère les informations du medium
           li.on("click", function () {
-            getInformationsVoyant(voyant);
+            getInformationsMedium(medium);
           });
 
-          listeVoyants.append(li);
+          listeMediums.append(li);
         });
       } else {
-        // Si aucun voyant n'est trouvé, on affiche un message d'erreur
-        const listeVoyants = $("#liste-voyants");
+        // Si aucun medium n'est trouvé, on affiche un message d'erreur
+        const listeMediums = $("#liste-mediums");
         const li = $("<li>");
-        li.text("Aucun voyant n'est retrouvé dans la base de données.");
-        listeVoyants.append(li);
+        li.text("Aucun medium n'a été trouvé dans la base de données.");
+        listeMediums.append(li);
       }
     })
     .fail(function (error) {
@@ -99,49 +99,54 @@ $(document).ready(function () {
     });
 });
 
-function getInformationVoyant(voyant) {
-  const nomPrenomVoyant = $("#nom-prenom-voyant");
-  const genreVoyant = $("#genre-voyant");
-  const supportVoyant = $("#liste-support-voyant");
-  const presentationVoyant = $("#presentation-voyant");
+function getInformationmedium(medium) {
+  const nomPrenomMedium = $("#nom-prenom-medium");
+  const genreMedium = $("#genre-medium");
+  const supportMedium = $("#liste-support-medium");
+  const presentationMedium = $("#presentation-medium");
 
-  nomPrenomVoyant.text(`${voyant.denomination}`);
-  genreVoyant.text(`${voyant.genre}`);
+  nomPrenomMedium.text(`${medium.denomination}`);
+  genreMedium.text(`${medium.genre}`);
 
-  //On choisi 2 ou 3 supports aléatoirement dans le tableau tabSupport
-  supportVoyant.empty(); // On vide la liste des supports
-  for (let i = 0; i < Math.floor(Math.random() * 2) + 2; i++) {
-    const support = tabSupport[Math.floor(Math.random() * tabSupport.length)]; // On choisi un support aléatoirement
-    const li = $("<li>");
-    li.text(support);
-    supportVoyant.append(li);
+  if (medium.type == "Spirite") {
+    const supportSpirite = $("#support-spirite");
+    supportSpirite.text(`${medium.support}`);
+  } else if (medium.type == "Astrologue") {
+    const formationAstrologue = $("#formation-astrologue");
+    const promotionAstrologue = $("#promotion-astrologue");
+
+    formationAstrologue.text(`${medium.formation}`);
+    promotionAstrologue.text(`${medium.promotion}`);
+  } else if (medium.type == "Cartomancien") {
+    const cartes = $("#cartes");
+    cartes.text(`${medium.cartes}`);
   }
 
-  presentationVoyant.text(`${voyant.presentation}`);
+  presentationMedium.text(`${medium.presentation}`);
 
   // quand on clique sur le boutton
   const bouttonPrendreRendezVous = $("#btn-prendre-rendez-vous");
   bouttonPrendreRendezVous.on("click", function () {
-    prendreRdv(voyant); // On prend un rendez-vous avec le voyant sélectionné
+    prendreRdv(medium); // On prend un rendez-vous avec le medium sélectionné
   });
 }
 
-function prendreRdv(voyant) {
+function prendreRdv(medium) {
   $.ajax({
     url: "./ActionServlet",
     method: "GET",
     data: {
       todo: "prendreRDV",
-      medium: voyant,
+      denominationMedium: medium.denomination, // On envoie uniquement la denomination du medium
     },
     dataType: "json",
   })
     .done(function (response) {
       if (response.rdvOk) {
-        alert("attente prise de contact avec le voyant");
+        alert("attente prise de contact avec le medium");
       } else {
         alert(
-          "Aucun voyant n'est disponible pour le moment, veuillez réessayer plus tard"
+          "Aucun medium n'est disponible pour le moment, veuillez réessayer plus tard"
         );
       }
     })
