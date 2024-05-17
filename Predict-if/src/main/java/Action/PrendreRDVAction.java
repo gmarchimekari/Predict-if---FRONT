@@ -7,6 +7,9 @@ package Action;
 
 import java.text.ParseException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import metier.model.Client;
+import metier.model.Medium;
 import metier.service.ServiceManager;
 
 /**
@@ -20,8 +23,17 @@ public class PrendreRDVAction extends Action {
     }
     
     @Override
-    public void execute(HttpServletRequest request) throws ParseException {
+    public void execute(HttpServletRequest request) throws ParseException {  
+        HttpSession session = request.getSession(true);
         
+        Long clientId = (Long) session.getAttribute("UtilisateurId");
+        String mediumDenomination = (String) request.getParameter("denominationMedium");
+        
+        Client client = service.trouverClientParId(clientId);
+        Boolean consultationOk = service.creerConsultation(mediumDenomination, client);
+
+        request.setAttribute("consultationOk", consultationOk);
+
     }
     
 }

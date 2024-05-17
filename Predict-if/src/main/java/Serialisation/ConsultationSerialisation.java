@@ -5,7 +5,11 @@
  */
 package Serialisation;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,7 +24,17 @@ public class ConsultationSerialisation extends Serialisation {
 
     @Override
     public void serialise(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JsonObject container = new JsonObject();
+        Gson gsonBuilder = new GsonBuilder().create();
+        Boolean rdvOk = (Boolean) request.getAttribute("consultationOk");
+        
+        container.addProperty("rdvOk", rdvOk);
+        gsonBuilder.toJson(container);
+        
+        response.setContentType("application/json;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println(gsonBuilder.toJson(container));
+        out.close();
     }
     
 }

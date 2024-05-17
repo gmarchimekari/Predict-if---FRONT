@@ -69,15 +69,22 @@ public class MenuClientSerialisation extends Serialisation {
             jsonMedium.addProperty("nbConsultations", medium.getNbConsultation());
             if(medium instanceof Astrologue) {
                 jsonMedium.addProperty("type", "Astrologue");
+                Astrologue astrologue = (Astrologue) medium;
+                jsonMedium.addProperty("formation", astrologue.getFormation());
+                jsonMedium.addProperty("promotion", astrologue.getPromotion());
             } else if(medium instanceof Cartomancien) {
                 jsonMedium.addProperty("type", "Cartomancien");
             } else if(medium instanceof Spirite) {
                 jsonMedium.addProperty("type", "Spirite");
+                Spirite spirite = (Spirite) medium;
+                jsonMedium.addProperty("support", spirite.getSupport());
             }
+            jsonMedium.addProperty("presentation", medium.getPresentation());
             
             jsonListeMediums.add(jsonMedium);
         }
-
+        container.add("mediums", jsonListeMediums);
+        
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();
         out.println(gsonBuilder.toJson(container));

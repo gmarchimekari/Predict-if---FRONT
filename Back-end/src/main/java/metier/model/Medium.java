@@ -43,7 +43,10 @@ public abstract class Medium {
         return nbConsultation;
     }
 
-
+    public String getPresentation() {
+        return presentation;
+    }
+    
     public void setGenre(String genre) {
         this.genre = genre;
     }
