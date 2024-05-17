@@ -1,3 +1,16 @@
+const tabSupport = [
+  "Marc de café",
+  "Boule de cristal",
+  "Cartomancie",
+  "Chiromancie",
+  "Astrologie",
+  "Numérologie",
+  "Runes",
+  "Pendule",
+  "Oreilles de lapin",
+  "Pierres",
+];
+
 $(document).ready(function () {
   $.ajax({
     url: "./ActionServlet",
@@ -86,4 +99,54 @@ $(document).ready(function () {
     });
 });
 
-function getInformationVoyant(voyant) {}
+function getInformationVoyant(voyant) {
+  const nomPrenomVoyant = $("#nom-prenom-voyant");
+  const genreVoyant = $("#genre-voyant");
+  const supportVoyant = $("#liste-support-voyant");
+  const presentationVoyant = $("#presentation-voyant");
+
+  nomPrenomVoyant.text(`${voyant.denomination}`);
+  genreVoyant.text(`${voyant.genre}`);
+
+  //On choisi 2 ou 3 supports aléatoirement dans le tableau tabSupport
+  supportVoyant.empty(); // On vide la liste des supports
+  for (let i = 0; i < Math.floor(Math.random() * 2) + 2; i++) {
+    const support = tabSupport[Math.floor(Math.random() * tabSupport.length)]; // On choisi un support aléatoirement
+    const li = $("<li>");
+    li.text(support);
+    supportVoyant.append(li);
+  }
+
+  presentationVoyant.text(`${voyant.presentation}`);
+
+  // quand on clique sur le boutton
+  const bouttonPrendreRendezVous = $("#btn-prendre-rendez-vous");
+  bouttonPrendreRendezVous.on("click", function () {
+    prendreRdv(voyant); // On prend un rendez-vous avec le voyant sélectionné
+  });
+}
+
+function prendreRdv(voyant) {
+  $.ajax({
+    url: "./ActionServlet",
+    method: "GET",
+    data: {
+      todo: "prendreRDV",
+      medium: voyant,
+    },
+    dataType: "json",
+  })
+    .done(function (response) {
+      if (response.rdvOk) {
+        alert("attente prise de contact avec le voyant");
+      } else {
+        alert(
+          "Aucun voyant n'est disponible pour le moment, veuillez réessayer plus tard"
+        );
+      }
+    })
+    .fail(function (error) {
+      // Fonction appelée en cas d'erreur lors de l'appel AJAX
+      alert("Erreur lors de l'appel AJAX");
+    });
+}
