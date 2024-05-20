@@ -6,16 +6,16 @@ $(document).ready(function () {
       url: "./ActionServlet",
       method: "POST",
       data: {
-        todo: "estConnecte",
+        todo: "estConnecte"
       },
-      dataType: "json",
+      dataType: "json"
     })
       .done(function (response) {
         if (response.estConnecte) {
           // Si l'utilisateur est connecté, on vérifie son type
-          if (response.typeUtilisateur == "client") {
+          if (response.typeUtilisateur === "client") {
             window.location.href = "menuClient.html";
-          } else if (response.typeUtilisateur == "employe") {
+          } else if (response.typeUtilisateur === "employe") {
             window.location.href = "menuEmploye.html";
           }
           // else ne devrait pas arriver

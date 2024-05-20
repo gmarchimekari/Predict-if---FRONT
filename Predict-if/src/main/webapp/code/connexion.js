@@ -20,6 +20,7 @@ $(document).ready(function () {
     })
       .done(function (response) {
         // Fonction appelée en cas d'appel AJAX réussi
+        console.log("response ==> " + response);
         if (response.operationOk) {
           // si la connexion est réussie
           $id = response.utilisateur.id;
