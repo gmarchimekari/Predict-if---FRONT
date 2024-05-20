@@ -67,28 +67,30 @@ public class ActionServlet extends HttpServlet {
         System.out.println("Parametre todo est " + todo);
         switch(todo) {
             case "connecter":
-                System.out.println("je futdytfyufhahha");
+                System.out.println("connecterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
                 new AuthentifierUtilisateurAction(service).execute(request);
                 new ProfilUtilisateurSerialisation().serialise(request, response);
                 break;
                 
             case "inscrire":
-                System.out.println("**************************************  je suis la hyfutdytfyufhahha");
+                System.out.println("inscriptionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
                 new InscrireUtilisateurAction(service).execute(request);
                 new ProfilUtilisateurSerialisation().serialise(request, response);
                 break;
             
             case "estConnecte":
-                //bqssiufhiu
+                System.out.println("estConnecteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
                 new ProfilUtilisateurSerialisation().serialise(request, response);
                 break;
                 
             case "menuClient":
+                System.out.println("menu clientttttttttttttttttttttttttttttttttttttttttttt");
                 new AfficherMenuClientAction(service).execute(request);
                 new MenuClientSerialisation().serialise(request, response);
                 break;
                 
             case "prendreRDV":
+                System.out.println("prendre rdvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
                 new PrendreRDVAction(service).execute(request);
                 new ConsultationSerialisation().serialise(request, response);
                 break;
