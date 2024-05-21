@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $.ajax({
-    url: "./ActionServlet",
+    url: "../ActionServlet",
     method: "GET",
     data: {
       todo: "menuClient",
@@ -21,7 +21,7 @@ $(document).ready(function () {
           : $("#prenom-client").val(nonRenseigne);
 
         response.client.profilAstral.couleur !== ""
-          ? $("#couleur-client").val(response.client.profilAstral)
+          ? $("#couleur-client").val(response.client.profilAstral.couleur)
           : $("#couleur-client").val(nonRenseigne);
 
         response.client.profilAstral.animalTotem !== ""
@@ -45,7 +45,7 @@ $(document).ready(function () {
         response.client.dateNaissance !== ""
           ? $("#date-naissance-client").val(response.client.dateNaissance)
           : $("#date-naissance-client").val(nonRenseigne);
-
+                    
         response.client.mail !== ""
           ? $("#mail-client").val(response.client.mail)
           : $("#mail-client").val(nonRenseigne);
@@ -86,7 +86,7 @@ $(document).ready(function () {
     });
 });
 
-function getInformationmedium(medium) {
+function getInformationsMedium(medium) {
   const nomPrenomMedium = $("#nom-prenom-medium");
   const genreMedium = $("#genre-medium");
   const supportMedium = $("#liste-support-medium");
@@ -122,7 +122,7 @@ function getInformationmedium(medium) {
 
 function prendreRdv(medium) {
   $.ajax({
-    url: "./ActionServlet",
+    url: "../ActionServlet",
     method: "GET",
     data: {
       todo: "prendreRDV",

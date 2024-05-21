@@ -28,7 +28,7 @@ public class AfficherMenuClientAction extends Action {
         HttpSession session = request.getSession(true);
         
         Long clientId = (Long) session.getAttribute("UtilisateurId");
-        List<Medium> lesMediums = service.getAllMediums();
+        List<Medium> lesMediums = service.getTopFiveMedium();
         request.setAttribute("Mediums", lesMediums);
         
         if(clientId != null) {

@@ -28,7 +28,8 @@ public class InscrireUtilisateurAction extends Action {
         String nom = (String) request.getParameter("nom");
         String prenom = (String) request.getParameter("prenom");
         
-        String dateNaissanceString = (String) request.getParameter("dateNaissance");
+        String d = (String) request.getParameter("dateNaissance");
+        String dateNaissanceString = d.charAt(8)+d.charAt(9)+"/"+ d.charAt(5)+d.charAt(6)+"/"+d.charAt(0)+d.charAt(1)+d.charAt(2)+d.charAt(3);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date dateNaissance = dateFormat.parse(dateNaissanceString);
         

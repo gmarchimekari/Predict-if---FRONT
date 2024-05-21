@@ -32,14 +32,6 @@ function verifierFormulaire() {
     return false;
   }
 
-  // Transformation de la date de naissance en format jour/mois/année
-  var formattedDate =
-    selectedDate.getDate() +
-    "/" +
-    (selectedDate.getMonth() + 1) +
-    "/" +
-    selectedDate.getFullYear();
-  $("#champ-date-naissance").val(formattedDate); // Mise à jour du champ
 
   // Vérification que les mots de passe sont identiques
   if (motDePasse !== confirmationMotDePasse) {
@@ -52,6 +44,7 @@ function verifierFormulaire() {
 }
 
 $(document).ready(function () {
+    console.log("wesh la zoneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
   $("#bouton-inscription").on("click", function () {
     // Fonction appelée lors du clic sur le bouton
 
@@ -69,10 +62,11 @@ $(document).ready(function () {
     var numeroTel = $("#champ-numero-tel").val();
     var mail = $("#champ-mail").val();
     var motDePasse = $("#champ-mot-de-passe").val();
+    console.log(dateNaissance);
 
     // Appel AJAX
     $.ajax({
-      url: "./ActionServlet",
+      url: "../ActionServlet",
       method: "POST",
       data: {
         todo: "inscrire",
@@ -91,9 +85,9 @@ $(document).ready(function () {
         // Fonction appelée en cas d'appel AJAX réussi
         if (response.operationOk) {
           if (response.typeUtilisateur == "client") {
-            $id = response.client.id;
+            $id = response.utilisateur.id;
             // Redirection vers la page menuClient.html en incluant l'ID du client dans l'URL
-            window.location.href = "menuClient.html?id=" + idClient;
+            window.location.href = "connexion.html";
           }
         } else {
           // si l'inscription a échouée
@@ -108,5 +102,6 @@ $(document).ready(function () {
         // Fonction appelée en cas d'erreur lors de l'appel AJAX
         alert("Erreur lors de l'appel AJAX");
       });
+      return false; // evite le rechargement de la page (comportement par defaut du form)
   });
 });
