@@ -145,6 +145,12 @@ function getInformationsMedium(medium) {
 
 function prendreRdv(medium) {
     $("#btn-prendre-rendez-vous").prop("disabled", true);
+    //var lesMediums = $("#liste-mediums").children()
+    //console.log(lesMediums[0])
+    //for (var i = 0; i < lesMediums.length; i++) {
+    //    lesMediums[i].off("click");
+    //}
+    
   $.ajax({
     url: "../ActionServlet",
     method: "GET",

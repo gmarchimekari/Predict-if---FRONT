@@ -55,27 +55,27 @@ $(document).ready(function () {
             console.log(response.client.nom)
           // si le client est renseigné
           response.client.nom !== ""
-            ? $("#nom-client").val(response.client.nom)
-            : $("#nom-client").val(nonRenseigne);
+            ? $("#nom-client").text(response.client.nom)
+            : $("#nom-client").text(nonRenseigne);
 
           response.client.prenom !== ""
-            ? $("#prenom-client").val(response.client.prenom)
-            : $("#prenom-client").val(nonRenseigne);
+            ? $("#prenom-client").text(response.client.prenom)
+            : $("#prenom-client").text(nonRenseigne);
 
           response.client.couleur !== ""
-            ? $("#couleur").val(response.client.couleur)
-            : $("#couleur").val(nonRenseigne);
+            ? $("#couleur").text(response.client.profilAstral.couleur)
+            : $("#couleur").text(nonRenseigne);
 
           response.client.signeZodiac !== ""
-            ? $("#signe-zodiac").text(response.client.signeZodiac)
+            ? $("#signe-zodiac").text(response.client.profilAstral.signeZodiac)
             : $("#signe-zodiac").text(nonRenseigne);
 
           response.client.signeChinois !== ""
-            ? $("#signe-chinois").text(response.client.signeChinois)
+            ? $("#signe-chinois").text(response.client.profilAstral.signeChinois)
             : $("#signe-chinois").text(nonRenseigne);
 
           response.client.animalTotem !== ""
-            ? $("#animal-totem").text(response.client.animalTotem)
+            ? $("#animal-totem").text(response.client.profilAstral.animalTotem)
             : $("#animal-totem").text(nonRenseigne);
         }
 
