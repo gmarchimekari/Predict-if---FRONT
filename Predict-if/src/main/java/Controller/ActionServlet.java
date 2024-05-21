@@ -8,6 +8,7 @@ package Controller;
 import Action.AfficherMenuClientAction;
 import Action.AfficherMenuEmployeAction;
 import Action.AuthentifierUtilisateurAction;
+import Action.DeconnexionAction;
 import Action.InscrireUtilisateurAction;
 import Action.PrendreRDVAction;
 import Serialisation.ConsultationSerialisation;
@@ -101,6 +102,12 @@ public class ActionServlet extends HttpServlet {
                 System.out.println("get Informations Consultationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
                 new AfficherMenuEmployeAction(service).execute(request);
                 new MenuEmployeSerialisation().serialise(request, response);
+                break;
+                
+            case "seDeconnecter":
+                System.out.println("Deconnexionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+                new DeconnexionAction(service).execute(request);
+                //new MenuEmployeSerialisation().serialise(request, response);
                 break;
                 
             default:

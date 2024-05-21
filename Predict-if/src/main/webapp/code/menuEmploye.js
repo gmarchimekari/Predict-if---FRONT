@@ -1,5 +1,22 @@
 $(document).ready(function () {
   const nonRenseigne = "Non renseigné";
+  
+  $("#btn-se-deconnecter").on("click", function () {
+      $.ajax({
+        url: "../ActionServlet",
+        method: "GET",
+        data: {
+          todo: "seDeconnecter",
+        }
+      })
+        .done(function (response) {
+            window.location.href = "../html/connexion.html";
+        })
+        .fail(function (error) {
+          // Fonction appelée en cas d'erreur lors de l'appel AJAX
+          alert("Erreur lors de l'appel AJAX");
+        });
+  });
 
   $.ajax({
     url: "../ActionServlet",
@@ -30,9 +47,12 @@ $(document).ready(function () {
       } else {
         // si l'employé a une consultation en cours
         if (!response.client) {
+            console.log("pas de clients")
           // si le client n'est pas renseigné
           $("#infos-clients").hide(); // On cache la partie informations client
         } else {
+            console.log("yess clients")            
+            console.log(response.client.nom)
           // si le client est renseigné
           response.client.nom !== ""
             ? $("#nom-client").val(response.client.nom)

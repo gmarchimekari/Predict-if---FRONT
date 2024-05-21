@@ -1,6 +1,23 @@
 $(document).ready(function () {
   // desactivé le click sur le bouton prendre rendez-vous
   $("#btn-prendre-rendez-vous").prop("disabled", true);
+  
+  $("#btn-se-deconnecter").on("click", function () {
+      $.ajax({
+        url: "../ActionServlet",
+        method: "GET",
+        data: {
+          todo: "seDeconnecter",
+        }
+      })
+        .done(function (response) {
+            window.location.href = "../html/connexion.html";
+        })
+        .fail(function (error) {
+          // Fonction appelée en cas d'erreur lors de l'appel AJAX
+          alert("Erreur lors de l'appel AJAX");
+        });
+  });
 
   $.ajax({
     url: "../ActionServlet",
@@ -127,6 +144,7 @@ function getInformationsMedium(medium) {
 }
 
 function prendreRdv(medium) {
+    $("#btn-prendre-rendez-vous").prop("disabled", true);
   $.ajax({
     url: "../ActionServlet",
     method: "GET",
