@@ -89,7 +89,7 @@ $(document).ready(function () {
 function getInformationmedium(medium) {
   const nomPrenomMedium = $("#nom-prenom-medium");
   const genreMedium = $("#genre-medium");
-  const supportMedium = $("#liste-support-medium");
+
   const presentationMedium = $("#presentation-medium");
 
   nomPrenomMedium.text(`${medium.denomination}`);

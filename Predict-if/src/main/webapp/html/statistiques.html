@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistiques</title>
+    <link rel="stylesheet" type="text/css" href="../style/statistiques.css" />
+    <link rel="stylesheet" type="text/css" href="../style/index.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+  <body>
+    <div id="nbs-consultations-mediums" class="highcharts-container"></div>
+    <div id="repartition-client-par-employe" class="highcharts-container"></div>
+    <div id="top5-mediums">
+      <h2>Top 5 mediums choisis par les clients :</h2>
+    </div>
+    <div id="repartition-geo-clients"></div>
+
+    <!-- insertions des librairies utiles pour la page (chart et map) -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhf3JleYpal9S-xouJYH8lf7Dvz5Y2Nko&callback=initMap"
+    ></script>
+    <script src="../code/statistiques.js"></script>
+  </body>
+</html>

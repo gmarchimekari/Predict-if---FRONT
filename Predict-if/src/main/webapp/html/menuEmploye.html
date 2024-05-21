@@ -1,16 +1,84 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Employe</title>
+    <link rel="stylesheet" type="text/css" href="../style/menuEmploye.css" />
+    <link rel="stylesheet" type="text/css" href="../style/index.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+  <body>
+    <header id="header-menu-employe">
+      <p id="titre-page">Predict'if</p>
+    </header>
+    <div id="container-menu-employe">
+      <div id="container-presentation-employe">
+        <div id="employe">
+          <p id="nom-employe">Nom de l'employé</p>
+          <p id="prenom-employe">Prénom de l'employé</p>
+        </div>
+        <div id="stats-div">
+          <button id="statistiques" href="statistiques.html">
+            Statistiques
+          </button>
+        </div>
+      </div>
+      <div id="container-prochaine-consult">
+        <h2 id="titre-pc">Prochaine consultation</h2>
+        <div id="infos-clients-medium">
+          <div id="infos-clients">
+            <p>Infos clients :</p>
+            <div class="container-info">
+              <p>Nom du client :</p>
+              <p class="info" id="nom-client">Nom du client</p>
+            </div>
+            <div class="container-info">
+              <p>Prénom du client :</p>
+              <p class="info" id="prenom-client">Prénom du client</p>
+            </div>
+            <div class="container-info">
+              <p><strong>Profil astral :</strong></p>
+            </div>
+            <div class="container-info">
+              <p>Couleur :</p>
+              <p class="info" id="couleur">Couleur</p>
+            </div>
+            <div class="container-info">
+              <p>Signe du zodiac :</p>
+              <p class="info" id="signe-zodiac">Signe du zodiac</p>
+            </div>
+            <div class="container-info">
+              <p>Signe chinois :</p>
+              <p class="info" id="signe-chinois">Signe chinois</p>
+            </div>
+            <div class="container-info">
+              <p>Animal totem :</p>
+              <p class="info" id="animal-totem">Animal totem</p>
+            </div>
+          </div>
+          <div id="infos-medium">
+            <p>Medium à incarner :</p>
+            <div class="container-info">
+              <p>Denomination :</p>
+              <p class="info" id="denomination-medium">Dénomination</p>
+            </div>
+            <div class="container-info">
+              <p>Genre :</p>
+              <p class="info" id="genre-medium">Genre</p>
+            </div>
+            <div class="container-info">
+              <p class="info" id="support-medium"></p>
+            </div>
+          </div>
+        </div>
+        <div id="container-historique-consultations">
+          <h2 id="titre-hc">Historique des consultations du clients:</h2>
+          <ul id="liste-consultations"></ul>
+        </div>
+        <button id="btn-pret">Commencer la consultation</button>
+      </div>
+    </div>
+    <script src="../code/menuEmployee.js"></script>
+  </body>
 </html>

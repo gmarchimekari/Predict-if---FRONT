@@ -3,3 +3,5 @@ pas getSupport dans Spirite
 pas getFormation et getPromotion dans Astrologue
 Ne sais pas quoi afficher pour la description d'un Cartomancier ou un Astrologue dans le menuClient
 Un medium n'a pas de popularité (on doit le générer dans le front directement)
+Les services sont mal documenté et avec beaucoup d'affichage 
+Le service à appeler a l'initialisation de la page MenuEmploye n'a aucun sens => il faut utiliser employe.getConsultationEnCours(), pas précisé dans les specs

@@ -1,0 +1,50 @@
+#container-presentation-employe,
+#infos-clients-medium {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#container-prochaine-consult {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#employe {
+  margin-right: 40px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+#nom-employe,
+#prenom-employe {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#infos-clients {
+  text-align: center;
+  margin-right: 70px;
+}
+
+.container-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.info {
+  margin-left: 10px;
+}
