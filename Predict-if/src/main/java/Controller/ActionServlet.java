@@ -6,11 +6,13 @@ package Controller;
  * and open the template in the editor.
  */
 import Action.AfficherMenuClientAction;
+import Action.AfficherMenuEmployeAction;
 import Action.AuthentifierUtilisateurAction;
 import Action.InscrireUtilisateurAction;
 import Action.PrendreRDVAction;
 import Serialisation.ConsultationSerialisation;
 import Serialisation.MenuClientSerialisation;
+import Serialisation.MenuEmployeSerialisation;
 import Serialisation.ProfilUtilisateurSerialisation;
 import dao.JpaUtil;
 import java.io.IOException;
@@ -97,8 +99,8 @@ public class ActionServlet extends HttpServlet {
                 
             case "getInformationsConsultation":
                 System.out.println("get Informations Consultationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
-                new PrendreRDVAction(service).execute(request);
-                new ConsultationSerialisation().serialise(request, response);
+                new AfficherMenuEmployeAction(service).execute(request);
+                new MenuEmployeSerialisation().serialise(request, response);
                 break;
                 
             default:

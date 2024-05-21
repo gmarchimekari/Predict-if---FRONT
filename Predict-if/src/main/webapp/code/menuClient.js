@@ -90,6 +90,8 @@ $(document).ready(function () {
 });
 
 function getInformationsMedium(medium) {
+    console.log(medium);
+  $("#btn-prendre-rendez-vous").prop("disabled", false);
   const nomPrenomMedium = $("#nom-prenom-medium");
   const genreMedium = $("#genre-medium");
 
@@ -119,6 +121,7 @@ function getInformationsMedium(medium) {
   // quand on clique sur le boutton
   const bouttonPrendreRendezVous = $("#btn-prendre-rendez-vous");
   bouttonPrendreRendezVous.on("click", function () {
+      console.log(medium);
     prendreRdv(medium); // On prend un rendez-vous avec le medium sélectionné
   });
 }
@@ -134,6 +137,7 @@ function prendreRdv(medium) {
     dataType: "json",
   })
     .done(function (response) {
+        console.log(response.rdvOk);
       if (response.rdvOk) {
         alert("attente prise de contact avec le medium");
       } else {

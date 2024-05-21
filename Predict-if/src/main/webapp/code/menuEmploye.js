@@ -2,7 +2,7 @@ $(document).ready(function () {
   const nonRenseigne = "Non renseigné";
 
   $.ajax({
-    url: "./ActionServlet",
+    url: "../ActionServlet",
     method: "GET",
     data: {
       todo: "getInformationsConsultation",
@@ -10,6 +10,7 @@ $(document).ready(function () {
     dataType: "json",
   })
     .done(function (response) {
+        console.log(response);
       response.employe.nom !== ""
         ? $("#nom-employe").val(response.employe.nom)
         : $("#nom-employe").val(nonRenseigne);
@@ -94,12 +95,12 @@ $(document).ready(function () {
       } else {
         response.listeConsultations.forEach((consultation) => {
           const li = $("<li>");
-
+          const lesConsultations = $("#liste-consultations");
           li.text(
-            `Date : ${consultation.date} - Medium : ${consultation.medium.denomination} - Commentaire : ${consultation.commentaire}`
+            `Date : ${consultation.date} - Medium : ${consultation.denomination} - Commentaire : ${consultation.commentaire}`
           );
 
-          listeConsultations.append(li);
+          lesConsultations.append(li);
         });
       }
 
