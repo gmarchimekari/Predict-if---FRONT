@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     // Appel AJAX
     $.ajax({
-      url: "./ActionServlet",
+      url: "../ActionServlet",
       method: "POST",
       data: {
         todo: "connecter",
