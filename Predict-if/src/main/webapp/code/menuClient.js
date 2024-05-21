@@ -1,4 +1,7 @@
 $(document).ready(function () {
+  // desactivé le click sur le bouton prendre rendez-vous
+  $("#btn-prendre-rendez-vous").prop("disabled", true);
+
   $.ajax({
     url: "../ActionServlet",
     method: "GET",
@@ -45,7 +48,7 @@ $(document).ready(function () {
         response.client.dateNaissance !== ""
           ? $("#date-naissance-client").val(response.client.dateNaissance)
           : $("#date-naissance-client").val(nonRenseigne);
-                    
+
         response.client.mail !== ""
           ? $("#mail-client").val(response.client.mail)
           : $("#mail-client").val(nonRenseigne);
