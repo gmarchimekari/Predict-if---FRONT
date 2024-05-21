@@ -95,6 +95,12 @@ public class ActionServlet extends HttpServlet {
                 new ConsultationSerialisation().serialise(request, response);
                 break;
                 
+            case "getInformationsConsultation":
+                System.out.println("get Informations Consultationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+                new PrendreRDVAction(service).execute(request);
+                new ConsultationSerialisation().serialise(request, response);
+                break;
+                
             default:
                 System.out.println("je suis la hahahha");
                 break; 
