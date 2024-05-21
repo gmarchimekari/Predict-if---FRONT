@@ -25,8 +25,8 @@ public class AuthentifierUtilisateurAction extends Action {
     @Override
     public void execute(HttpServletRequest request){
         
-        String login = (String) request.getParameter("mail");
-        String password = (String) request.getParameter("motDePasse");
+        String login = (String) request.getParameter("login");
+        String password = (String) request.getParameter("password");
         
         Client client = service.authentifierClient(login, password);
         Employe employe = service.authentifierEmploye(login, password);

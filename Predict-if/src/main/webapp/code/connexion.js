@@ -21,15 +21,16 @@ $(document).ready(function () {
       .done(function (response) {
         // Fonction appelée en cas d'appel AJAX réussi
         console.log("response ==> " + response);
+        
         if (response.operationOk) {
           // si la connexion est réussie
           $id = response.utilisateur.id;
           if (response.typeUtilisateur == "employe") {
             // Redirection vers la page d'accueil employé en incluant l'ID de l'employé dans l'URL
-            window.location.href = "menu-employe.html?id=" + id;
+            window.location.href = "menuEmploye.html?id=" + $id;
           } else if (response.typeUtilisateur == "client") {
             // Redirection vers la page d'accueil client en incluant l'ID du client dans l'URL
-            window.location.href = "menu-client.html?id=" + id;
+            window.location.href = "menuClient.html?id=" + $id;
           } else {
             // Dans le cas où le type d'utilisateur n'est pas reconnu
             alert("Erreur lors de la connexion, veuillez réessayer.");

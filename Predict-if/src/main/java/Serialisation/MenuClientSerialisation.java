@@ -11,6 +11,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,7 +42,13 @@ public class MenuClientSerialisation extends Serialisation {
             jsonUser.addProperty("nom", client.getNom());
             jsonUser.addProperty("prenom", client.getPrenom());
             jsonUser.addProperty("mail", client.getMail());
-            jsonUser.addProperty("dateNaissance", client.getDateNaissance().toString());
+
+            // Créer un objet SimpleDateFormat avec le format désiré
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+            // Convertir la date en chaîne de caractères
+            String dateString = dateFormat.format(client.getDateNaissance());
+            jsonUser.addProperty("dateNaissance", dateString);
             
             JsonObject jsonAstral = new JsonObject();
             ProfilAstral profilAstral = client.getProfilAstral();
@@ -61,7 +68,9 @@ public class MenuClientSerialisation extends Serialisation {
         
         List<Medium> mediums = (List<Medium>) request.getAttribute("Mediums");
         JsonArray jsonListeMediums = new JsonArray();
+
         for (Medium medium : mediums) {
+            System.out.println(medium);
             JsonObject jsonMedium = new JsonObject();
             jsonMedium.addProperty("id", medium.getId());
             jsonMedium.addProperty("denomination", medium.getDenomination());
@@ -80,10 +89,14 @@ public class MenuClientSerialisation extends Serialisation {
                 jsonMedium.addProperty("support", spirite.getSupport());
             }
             jsonMedium.addProperty("presentation", medium.getPresentation());
-            
+            gsonBuilder.toJson(jsonMedium);
             jsonListeMediums.add(jsonMedium);
         }
+        
+        gsonBuilder.toJson(jsonListeMediums);
         container.add("mediums", jsonListeMediums);
+        gsonBuilder.toJson(container);
+
         
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();
