@@ -23,3 +23,13 @@ button a {
 button:hover {
   background-color: #f0f0f0; /* Couleur de fond gris clair */
 }
+
+.btn-se-deconnecter {
+  background-color: red;
+  color: white;
+}
+
+.btn-se-deconnecter:hover {
+  background-color: white;
+  color: red;
+}

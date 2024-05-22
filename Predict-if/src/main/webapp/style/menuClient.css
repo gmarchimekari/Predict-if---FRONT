@@ -35,3 +35,15 @@
 #container-informations-client {
   width: 25%;
 }
+
+li {
+  text-align: center;
+  list-style-type: none;
+}
+
+li:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+

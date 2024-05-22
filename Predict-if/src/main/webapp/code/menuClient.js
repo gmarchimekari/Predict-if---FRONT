@@ -1,22 +1,23 @@
 $(document).ready(function () {
   // desactivé le click sur le bouton prendre rendez-vous
-  $("#btn-prendre-rendez-vous").prop("disabled", true);
-  
+  $("#btn-prendre-rendez-vous").hide();
+  $("#container-presentation-medium").hide();
+
   $("#btn-se-deconnecter").on("click", function () {
-      $.ajax({
-        url: "../ActionServlet",
-        method: "GET",
-        data: {
-          todo: "seDeconnecter",
-        }
+    $.ajax({
+      url: "../ActionServlet",
+      method: "GET",
+      data: {
+        todo: "seDeconnecter",
+      },
+    })
+      .done(function (response) {
+        window.location.href = "../html/connexion.html";
       })
-        .done(function (response) {
-            window.location.href = "../html/connexion.html";
-        })
-        .fail(function (error) {
-          // Fonction appelée en cas d'erreur lors de l'appel AJAX
-          alert("Erreur lors de l'appel AJAX");
-        });
+      .fail(function (error) {
+        // Fonction appelée en cas d'erreur lors de l'appel AJAX
+        alert("Erreur lors de l'appel AJAX");
+      });
   });
 
   $.ajax({
@@ -82,11 +83,14 @@ $(document).ready(function () {
           const li = $("<li>");
           // La popularité du medium est un pourcentage aléatoire entre 95 et 100 %
           const popularite = Math.floor(Math.random() * 6) + 95;
-          const contenuLi = `Nom : ${medium.denomination} - Type: ${medium.type}, Popularité: ${popularite}%`;
+          const contenuLi = `<strong>Nom :</strong> ${medium.denomination} - <strong>Type :</strong> ${medium.type}, <strong>Popularité :</strong> ${popularite}%`;
           li.text(contenuLi);
 
           // Lorsque l'utilisateur clique sur un medium, on récupère les informations du medium
           li.on("click", function () {
+            console.log("click");
+            $("#container-presentation-medium").show();
+            $("#btn-prendre-rendez-vous").show();
             getInformationsMedium(medium);
           });
 
@@ -107,7 +111,7 @@ $(document).ready(function () {
 });
 
 function getInformationsMedium(medium) {
-    console.log(medium);
+  console.log(medium);
   $("#btn-prendre-rendez-vous").prop("disabled", false);
   const nomPrenomMedium = $("#nom-prenom-medium");
   const genreMedium = $("#genre-medium");
@@ -138,19 +142,18 @@ function getInformationsMedium(medium) {
   // quand on clique sur le boutton
   const bouttonPrendreRendezVous = $("#btn-prendre-rendez-vous");
   bouttonPrendreRendezVous.on("click", function () {
-      console.log(medium);
     prendreRdv(medium); // On prend un rendez-vous avec le medium sélectionné
   });
 }
 
 function prendreRdv(medium) {
-    $("#btn-prendre-rendez-vous").prop("disabled", true);
-    //var lesMediums = $("#liste-mediums").children()
-    //console.log(lesMediums[0])
-    //for (var i = 0; i < lesMediums.length; i++) {
-    //    lesMediums[i].off("click");
-    //}
-    
+  $("#btn-prendre-rendez-vous").prop("disabled", true);
+  //var lesMediums = $("#liste-mediums").children()
+  //console.log(lesMediums[0])
+  //for (var i = 0; i < lesMediums.length; i++) {
+  //    lesMediums[i].off("click");
+  //}
+
   $.ajax({
     url: "../ActionServlet",
     method: "GET",
@@ -161,7 +164,7 @@ function prendreRdv(medium) {
     dataType: "json",
   })
     .done(function (response) {
-        console.log(response.rdvOk);
+      console.log(response.rdvOk);
       if (response.rdvOk) {
         alert("attente prise de contact avec le medium");
       } else {
@@ -175,3 +178,8 @@ function prendreRdv(medium) {
       alert("Erreur lors de l'appel AJAX");
     });
 }
+
+$("#liste-mediums").on("click", "li", function () {
+  $("#container-presentation-medium").show();
+  $("#btn-prendre-rendez-vous").show();
+});
