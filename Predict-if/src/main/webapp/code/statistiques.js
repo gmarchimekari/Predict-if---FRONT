@@ -27,12 +27,12 @@ $(document).ready(function () {
       if (response.repartitionClients) {
         // affichage de la répartition des clients par employé
         let ChartData = {
-          nomEmploye: [],
+          nomClient: [],
           repartitionClient: [],
         };
 
         response.repartitionClients.forEach((repartition) => {
-          ChartData.nomEmploye.push(repartition.nomEmploye);
+          ChartData.nomClient.push(repartition.nomClient);
           ChartData.repartitionClient.push(repartition.repartitionClient);
         });
 

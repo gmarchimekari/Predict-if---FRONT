@@ -5,11 +5,14 @@
  */
 package Action;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import metier.model.Consultation;
 import metier.model.Employe;
 import metier.model.Medium;
 import metier.service.ServiceManager;
@@ -35,8 +38,12 @@ public class getStatistiquesAction extends Action {
             request.setAttribute("Employe", employe);
             Map<String, Integer> repartitionClients = service.statistiquesEmployee(employe);
             request.setAttribute("repartitionClients", repartitionClients);
+            
+            List<Consultation> consultations = employe.getListeConsultation();
+            request.setAttribute("consultations", consultations);
         } else {
             request.setAttribute("repartitionClients", null);
+            request.setAttribute("consultations", null);
         }
         
         Map<String, Integer> nbConsultationsParMedium = service.nbConsultMedium();

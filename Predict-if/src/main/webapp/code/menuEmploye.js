@@ -1,7 +1,26 @@
 $(document).ready(function () {
   const nonRenseigne = "Non renseigné";
   
-  $(".btn-se-deconnecter").on("click", function () {
+  
+  $("#statistiques").on("click", function () {
+      $.ajax({
+        url: "../ActionServlet",
+        method: "GET",
+        data: {
+          todo: "getStatistiques",
+        }
+      })
+        .done(function (response) {
+            window.location.href = "../html/statistiques.html";
+        })
+        .fail(function (error) {
+          // Fonction appelée en cas d'erreur lors de l'appel AJAX
+          alert("Erreur lors de l'appel AJAX");
+        });
+  });
+  
+  
+    $(".btn-se-deconnecter").on("click", function () {
       $.ajax({
         url: "../ActionServlet",
         method: "GET",

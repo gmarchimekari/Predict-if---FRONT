@@ -34,6 +34,7 @@ public class StatistiquesSerialisation extends Serialisation {
         Employe employe = (Employe) request.getAttribute("Employe");
         if(employe == null) {
             container.addProperty("repartitionClients", "null");
+            container.addProperty("clients", "null");
         } else {
             Map<String, Integer> repartitionClients = (Map<String, Integer>) request.getAttribute("repartitionClients");
             JsonArray jsonListeRepartitionClients = new JsonArray();
@@ -54,6 +55,25 @@ public class StatistiquesSerialisation extends Serialisation {
             
             gsonBuilder.toJson(jsonListeRepartitionClients);
             container.add("repartitionClients", jsonListeRepartitionClients);
+            
+            List<Consultation> lesConsultations = (List<Consultation>) request.getAttribute("consultations");
+            JsonArray jsonListeConsultationsClients = new JsonArray();
+
+            for (Consultation c : lesConsultations) {
+                JsonObject jsonClient = new JsonObject();
+
+
+                jsonClient.addProperty("nom", c.getClient().getNom());
+                jsonClient.addProperty("prenom", c.getClient().getPrenom());
+                jsonClient.addProperty("longitude", c.getClient().getLongitude());
+                jsonClient.addProperty("latitude", c.getClient().getLatitude());
+                jsonClient.addProperty("longitude", c.getClient().getLongitude());
+
+                gsonBuilder.toJson(jsonClient);
+                jsonListeConsultationsClients.add(jsonClient);
+            }
+            gsonBuilder.toJson(jsonListeConsultationsClients);
+            container.add("clients", jsonListeConsultationsClients);
         }
         
         Map<String, Integer> nbConsultations = (Map<String, Integer>) request.getAttribute("nbConsultationsParMedium");
