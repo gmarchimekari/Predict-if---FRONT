@@ -110,6 +110,12 @@ public class ActionServlet extends HttpServlet {
                 //new MenuEmployeSerialisation().serialise(request, response);
                 break;
                 
+            case "statistiques":
+                System.out.println("statistiqueeeeeeeeeeeeeeeeeeeees");
+                new DeconnexionAction(service).execute(request);
+                //new MenuEmployeSerialisation().serialise(request, response);
+                break;
+                
             default:
                 System.out.println("je suis la hahahha");
                 break; 

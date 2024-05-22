@@ -33,7 +33,7 @@ public class EmployeDao {
     } 
     public List<Employe> findbyDispoGenre(String genre) {
         String s = "select c from Employe c where c.genre = :genre and c.disponible = 'true'";
-        TypedQuery query = JpaUtil.obtenirContextePersistance().createQuery(s,Employe.class).setParameter("genre", genre);;
+        TypedQuery query = JpaUtil.obtenirContextePersistance().createQuery(s,Employe.class).setParameter("genre", genre);
         return query.getResultList();
     } 
     public Employe update(Employe employe){

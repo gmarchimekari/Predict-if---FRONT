@@ -1,7 +1,7 @@
 $(document).ready(function () {
   const nonRenseigne = "Non renseigné";
   
-  $("#btn-se-deconnecter").on("click", function () {
+  $(".btn-se-deconnecter").on("click", function () {
       $.ajax({
         url: "../ActionServlet",
         method: "GET",

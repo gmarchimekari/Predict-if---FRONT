@@ -84,7 +84,7 @@ $(document).ready(function () {
       .done(function (response) {
         // Fonction appelée en cas d'appel AJAX réussi
         if (response.operationOk) {
-          if (response.typeUtilisateur == "client") {
+          if (response.typeUtilisateur === "client") {
             $id = response.utilisateur.id;
             // Redirection vers la page menuClient.html en incluant l'ID du client dans l'URL
             window.location.href = "connexion.html";

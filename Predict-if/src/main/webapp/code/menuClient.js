@@ -3,7 +3,7 @@ $(document).ready(function () {
   $("#btn-prendre-rendez-vous").hide();
   $("#container-presentation-medium").hide();
 
-  $("#btn-se-deconnecter").on("click", function () {
+  $(".btn-se-deconnecter").on("click", function () {
     $.ajax({
       url: "../ActionServlet",
       method: "GET",
@@ -83,7 +83,7 @@ $(document).ready(function () {
           const li = $("<li>");
           // La popularité du medium est un pourcentage aléatoire entre 95 et 100 %
           const popularite = Math.floor(Math.random() * 6) + 95;
-          const contenuLi = `<strong>Nom :</strong> ${medium.denomination} - <strong>Type :</strong> ${medium.type}, <strong>Popularité :</strong> ${popularite}%`;
+          const contenuLi = `Nom : ${medium.denomination} - Type : ${medium.type}, Popularité : ${popularite}%`;
           li.text(contenuLi);
 
           // Lorsque l'utilisateur clique sur un medium, on récupère les informations du medium
