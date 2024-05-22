@@ -9,12 +9,22 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   </head>
   <body>
-    <div id="nbs-consultations-mediums" class="highcharts-container"></div>
-    <div id="repartition-client-par-employe" class="highcharts-container"></div>
-    <div id="top5-mediums">
-      <h2>Top 5 mediums choisis par les clients :</h2>
+    <div id="statistics">
+      <div id="stats-top-div">
+        <div id="nbs-consultations-mediums" class="highcharts-container"></div>
+        <div
+          id="repartition-client-par-employe"
+          class="highcharts-container"
+        ></div>
+      </div>
+
+      <div id="stats-bottom-div">
+        <div id="top5-mediums">
+          <h2>Top 5 mediums choisis par les clients :</h2>
+        </div>
+        <div id="repartition-geo-clients"></div>
+      </div>
     </div>
-    <div id="repartition-geo-clients"></div>
 
     <!-- insertions des librairies utiles pour la page (chart et map) -->
     <script src="https://code.highcharts.com/highcharts.js"></script>

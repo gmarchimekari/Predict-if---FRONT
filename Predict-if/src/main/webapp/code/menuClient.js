@@ -178,8 +178,3 @@ function prendreRdv(medium) {
       alert("Erreur lors de l'appel AJAX");
     });
 }
-
-$("#liste-mediums").on("click", "li", function () {
-  $("#container-presentation-medium").show();
-  $("#btn-prendre-rendez-vous").show();
-});

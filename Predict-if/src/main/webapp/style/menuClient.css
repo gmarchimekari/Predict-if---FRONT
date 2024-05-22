@@ -20,12 +20,11 @@
 #container-informations-client {
   border: solid 1px #000000;
   border-radius: 5px;
-  border: solid 1px #000000;
-  border-radius: 5px;
   margin: 10px;
   display: flex;
   flex-direction: column;
   margin: 10px;
+  height: 150%;
 }
 
 #profil-voyant {
@@ -47,3 +46,16 @@ li:hover {
   cursor: pointer;
 }
 
+input {
+  margin: 0 10px 3px 10px;
+  border: solid 1px #000000;
+  border-radius: 5px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  /* gras */
+  font-weight: bold;
+}
