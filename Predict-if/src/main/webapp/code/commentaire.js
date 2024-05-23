@@ -1,6 +1,6 @@
 $(document).ready(function () {
   // Quand on clique sur le bouton "Terminer la consultation"
-  $("#btn-terminer-consultation").on("click", function () {
+  $("#btn-valider").on("click", function () {
     var commentaire = $("#comentaire-area").val();
     $.ajax({
       url: "../ActionServlet",
