@@ -649,7 +649,7 @@ public class ServiceManager {
         try {
             JpaUtil.creerContextePersistance();
             liste_medium = mediumDao.findAll();
-
+            System.out.println("sizeeeeeeeeeeeeeeeeeeeeeeeee deeeeeee "+liste_medium);
             Collections.sort(liste_medium, (Medium m1, Medium m2) -> (m2.getNbConsultation() - m1.getNbConsultation()));
             
             for (int i = 0; i < 5; i++) {
@@ -668,19 +668,18 @@ public class ServiceManager {
     // ajouter par l'equipe de gab
     public List<Medium> getAllMediums() {
         MediumDao mediumDao= new MediumDao();
-        List<Medium> liste_medium = null;
-        List<Medium> top_list = new ArrayList<>();
+        List<Medium> liste_medium = new ArrayList<>();
 
         try {
             JpaUtil.creerContextePersistance();
             liste_medium = mediumDao.findAll();
-
+            Collections.sort(liste_medium, (Medium m1, Medium m2) -> (m2.getNbConsultation() - m1.getNbConsultation()));
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("Erreur trouvé");
         } finally {
             JpaUtil.fermerContextePersistance();
         }
-        return top_list;
+        return liste_medium;
     }
 }

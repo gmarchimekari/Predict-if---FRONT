@@ -148,11 +148,18 @@ function getInformationsMedium(medium) {
 
 function prendreRdv(medium) {
   $("#btn-prendre-rendez-vous").prop("disabled", true);
-  //var lesMediums = $("#liste-mediums").children()
+  var lesMediums = $("#liste-mediums").children()
   //console.log(lesMediums[0])
   //for (var i = 0; i < lesMediums.length; i++) {
   //    lesMediums[i].off("click");
   //}
+  lesMediums.forEach(item => {
+    item.addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      console.log('Cet élément est non cliquable.');
+    });
+  });
 
   $.ajax({
     url: "../ActionServlet",

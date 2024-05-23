@@ -8,9 +8,11 @@ package Controller;
 import Action.AfficherMenuClientAction;
 import Action.AfficherMenuEmployeAction;
 import Action.AuthentifierUtilisateurAction;
+import Action.CommencerConsultationAction;
 import Action.DeconnexionAction;
 import Action.InscrireUtilisateurAction;
 import Action.PrendreRDVAction;
+import Action.TerminerConsultationAction;
 import Serialisation.ConsultationSerialisation;
 import Serialisation.MenuClientSerialisation;
 import Serialisation.MenuEmployeSerialisation;
@@ -118,7 +120,13 @@ public class ActionServlet extends HttpServlet {
                 
             case "commencerConsultation":
                 System.out.println("commencer consultationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
-                new DeconnexionAction(service).execute(request);
+                new CommencerConsultationAction(service).execute(request);
+                //new MenuEmployeSerialisation().serialise(request, response);
+                break;
+                
+            case "terminerConsultation":
+                System.out.println("terminer consultationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+                new TerminerConsultationAction(service).execute(request);
                 //new MenuEmployeSerialisation().serialise(request, response);
                 break;
                 

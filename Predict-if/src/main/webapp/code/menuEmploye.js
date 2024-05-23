@@ -156,19 +156,14 @@ $(document).ready(function () {
 // permet à l'employé de commencer la consultation lié au client
 function commencerConsultation() {
   $.ajax({
-    url: "./ActionServlet",
+    url: "../ActionServlet",
     method: "GET",
     data: {
       todo: "commencerConsultation",
-    },
-    dataType: "json",
+    }
   })
     .done(function (response) {
-      if (response.consultationDebutee) {
-        window.location.href = "consultation.html";
-      } else {
-        alert("Erreur lors de la consultation, veuillez réessayer.");
-      }
+        window.location.href = "../html/consultation.html";
     })
     .fail(function (error) {
       alert("Erreur lors de l'appel AJAX");

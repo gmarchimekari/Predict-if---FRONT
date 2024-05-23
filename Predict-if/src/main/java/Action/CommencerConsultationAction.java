@@ -8,6 +8,7 @@ package Action;
 import java.text.ParseException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import metier.model.Consultation;
 import metier.model.Employe;
 import metier.service.ServiceManager;
 
@@ -30,7 +31,9 @@ public class CommencerConsultationAction extends Action {
         if(employeId != null) {
             Employe employe = service.trouverEmployeParId(employeId);
             request.setAttribute("Employe", employe);
-            service.demarrerConsultation(employeId);
+            
+            Consultation consultation = employe.getConsultationenCours();
+            service.demarrerConsultation(consultation.getId());
         } else {
             request.setAttribute("Employe", null);
         }
