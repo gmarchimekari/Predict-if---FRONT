@@ -95,9 +95,10 @@ public class MenuClientSerialisation extends Serialisation {
         
         gsonBuilder.toJson(jsonListeMediums);
         container.add("mediums", jsonListeMediums);
-        gsonBuilder.toJson(container);
-
         
+        Boolean consultationaVenir = (Boolean) request.getAttribute("consultationaVenir");
+        container.addProperty("consultationaVenir", consultationaVenir);
+
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();
         out.println(gsonBuilder.toJson(container));

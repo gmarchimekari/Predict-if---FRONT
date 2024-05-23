@@ -21,7 +21,7 @@ $(document).ready(function () {
           // else ne devrait pas arriver
         } else {
           // Si l'utilisateur n'est pas connecté, redirection vers la page connexion.html
-          window.location.href = "connexion.html";
+          window.location.href = "./html/connexion.html";
         }
       })
       .fail(function (error) {

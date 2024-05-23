@@ -1,3 +1,4 @@
+pas de methode getallmedium
 pas getPresentation dans Medium
 pas getSupport dans Spirite
 pas getFormation et getPromotion dans Astrologue
@@ -7,3 +8,4 @@ Les services sont mal documenté et avec beaucoup d'affichage
 Le service à appeler a l'initialisation de la page MenuEmploye n'a aucun sens => il faut utiliser employe.getConsultationEnCours(), pas précisé dans les specs
 il y a un probleme dans creerConsultation car ca choisit un employe qui n'est pas disponible
 le getter dans employe getConsultationenCours est faux
+il n'y a pas une contrainte d'unicite sur la denomination

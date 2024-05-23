@@ -113,6 +113,10 @@ public class MenuEmployeSerialisation extends Serialisation {
                     container.addProperty("client", "null");                
                 }
                   
+            } else {
+                container.addProperty("listeConsultations", "null");
+                container.addProperty("client", "null");
+                container.addProperty("medium", "null");
             }
         } else {
             container.addProperty("employe", "null");

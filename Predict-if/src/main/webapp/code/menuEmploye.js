@@ -47,19 +47,21 @@ $(document).ready(function () {
   })
     .done(function (response) {
         console.log(response);
-      response.employe.nom !== ""
-        ? $("#nom-employe").val(response.employe.nom)
-        : $("#nom-employe").val(nonRenseigne);
 
-      response.employe.prenom !== ""
-        ? $("#prenom-employe").val(response.employe.prenom)
-        : $("#prenom-employe").val(nonRenseigne);
+           response.employe.prenom !== ""
+            ? $("#prenom-employe").text(response.employe.prenom)
+            : $("#prenom-employe").text(nonRenseigne);
+            
+          response.employe.nom !== ""
+            ? $("#nom-employe").text(response.employe.nom)
+            : $("#nom-employe").text(nonRenseigne);
 
       if (!response.consultationEnCours) {
         // si l'employé n'a pas de consultation en cours
-        $("#titre-pc").val("Aucune consultation en cours");
+        $("#titre-pc").text("Aucune consultation à effectuer");
         $("#infos-clients-medium").hide(); // On cache la partie informations client et medium
         $("#btn-pret").hide(); // On cache le bouton prêt
+        $("#titre-hc").hide();
 
         // Desactivé le click sur le bouton prêt
         $("#btn-pret").prop("disabled", true);
@@ -71,7 +73,7 @@ $(document).ready(function () {
           $("#infos-clients").hide(); // On cache la partie informations client
         } else {
             console.log("yess clients")            
-            console.log(response.client.nom)
+            console.log(response)
           // si le client est renseigné
           response.client.nom !== ""
             ? $("#nom-client").text(response.client.nom)
@@ -117,8 +119,8 @@ $(document).ready(function () {
           if (response.medium.type == "Spirite") {
             supportMedium.text(`Support : ${response.medium.support}`);
           } else if (response.medium.type == "Astrologue") {
-            supportMedium.text(
-              `Formation : ${response.medium.formation} <br> Promotion : ${response.medium.promotion}`
+            supportMedium.html(
+              `Formation : ${response.medium.formation} <br><br> Promotion : ${response.medium.promotion}`
             );
           } else if (response.medium.type == "Tarologue") {
             supportMedium.text(`Support : Cartes`);
@@ -128,19 +130,24 @@ $(document).ready(function () {
         }
       }
 
-      if (!response.listeConsultations) {
+      if (!response.listeConsultations || (response.listeConsultations.length === 1 && response.listeConsultations[0].commentaire === undefined)) {
         // si le clientÒ n'a pas de consultation en cours
-        $("#titre-hc").val("Le client n'a jamais consulté de médiums");
+        $("#titre-hc").text("Le client n'a jamais consulté de médiums");
       } else {
-        response.listeConsultations.forEach((consultation) => {
-          const li = $("<li>");
-          const lesConsultations = $("#liste-consultations");
-          li.text(
-            `Date : ${consultation.date} - Medium : ${consultation.denomination} - Commentaire : ${consultation.commentaire}`
-          );
+          if(response.listeConsultations !== "null") {
+              response.listeConsultations.forEach((consultation) => {
+           console.log(consultation.commentaire)
+           if(consultation.commentaire !== undefined) {
+                const li = $("<li>");
+                const lesConsultations = $("#liste-consultations");
+                li.text(
+                  `Date : ${consultation.date} - Medium : ${consultation.denomination} - Commentaire : ${consultation.commentaire}`
+                );
 
-          lesConsultations.append(li);
+                lesConsultations.append(li);
+           }
         });
+          }
       }
 
       $("#btn-pret").on("click", function () {

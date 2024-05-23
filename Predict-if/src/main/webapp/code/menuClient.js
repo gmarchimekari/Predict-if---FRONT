@@ -29,6 +29,40 @@ $(document).ready(function () {
     dataType: "json",
   })
     .done(function (response) {
+        console.log(response);
+        if(response.consultationaVenir){
+            $("#titre-page").text("Vous avez déjà effectué une demande de consultation.")
+            $("#choix-medium").hide();
+        } else{
+            //Remplissage de la listes des mediums de la base de données
+            if (response.mediums) {
+              const listeMediums = $("#liste-mediums");
+
+              response.mediums.forEach((medium) => {
+                const li = $("<li>");
+                // La popularité du medium est un pourcentage aléatoire entre 95 et 100 %
+                const popularite = Math.floor(Math.random() * 6) + 95;
+                const contenuLi = `Nom : ${medium.denomination} - Type : ${medium.type}, Popularité : ${popularite}%`;
+                li.text(contenuLi);
+
+                // Lorsque l'utilisateur clique sur un medium, on récupère les informations du medium
+                li.on("click", function () {
+                  console.log("click");
+                  $("#container-presentation-medium").show();
+                  $("#btn-prendre-rendez-vous").show();
+                  getInformationsMedium(medium);
+                });
+
+                listeMediums.append(li);
+              });
+            } else {
+              // Si aucun medium n'est trouvé, on affiche un message d'erreur
+              const listeMediums = $("#liste-mediums");
+              const li = $("<li>");
+              li.text("Aucun medium n'a été trouvé dans la base de données.");
+              listeMediums.append(li);
+            }
+        }
       // Remplissage des données du client dans le menu
       if (response.client) {
         // Remplissant les champs du formulaire avec les informations du client
@@ -73,35 +107,6 @@ $(document).ready(function () {
       } else {
         // Si l'utilisateur n'est pas connecté, redirection vers la page connexion.html
         window.location.href = "connexion.html";
-      }
-
-      //Remplissage de la listes des mediums de la base de données
-      if (response.mediums) {
-        const listeMediums = $("#liste-mediums");
-
-        response.mediums.forEach((medium) => {
-          const li = $("<li>");
-          // La popularité du medium est un pourcentage aléatoire entre 95 et 100 %
-          const popularite = Math.floor(Math.random() * 6) + 95;
-          const contenuLi = `Nom : ${medium.denomination} - Type : ${medium.type}, Popularité : ${popularite}%`;
-          li.text(contenuLi);
-
-          // Lorsque l'utilisateur clique sur un medium, on récupère les informations du medium
-          li.on("click", function () {
-            console.log("click");
-            $("#container-presentation-medium").show();
-            $("#btn-prendre-rendez-vous").show();
-            getInformationsMedium(medium);
-          });
-
-          listeMediums.append(li);
-        });
-      } else {
-        // Si aucun medium n'est trouvé, on affiche un message d'erreur
-        const listeMediums = $("#liste-mediums");
-        const li = $("<li>");
-        li.text("Aucun medium n'a été trouvé dans la base de données.");
-        listeMediums.append(li);
       }
     })
     .fail(function (error) {
@@ -148,13 +153,13 @@ function getInformationsMedium(medium) {
 
 function prendreRdv(medium) {
   $("#btn-prendre-rendez-vous").prop("disabled", true);
-  var lesMediums = $("#liste-mediums").children()
+  var lesMediums = $("#liste-mediums").children();
   //console.log(lesMediums[0])
   //for (var i = 0; i < lesMediums.length; i++) {
   //    lesMediums[i].off("click");
   //}
-  lesMediums.forEach(item => {
-    item.addEventListener('click', function(event) {
+ lesMediums.each(function(index, item) {
+    $(item).off("click").on('click', function(event) {
       event.preventDefault();
       event.stopPropagation();
       console.log('Cet élément est non cliquable.');

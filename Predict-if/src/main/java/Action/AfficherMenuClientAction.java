@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import metier.model.Client;
+import metier.model.Consultation;
 import metier.model.Medium;
 import metier.service.ServiceManager;
 
@@ -35,6 +36,12 @@ public class AfficherMenuClientAction extends Action {
         if(clientId != null) {
             Client client = service.trouverClientParId(clientId);
             request.setAttribute("Client", client);
+            List<Consultation> consultationHistorique = client.getListeRdv();
+            if(consultationHistorique.get(consultationHistorique.size() - 1).getCommentaire() == null){
+                request.setAttribute("consultationaVenir", true);
+            } else{
+                request.setAttribute("consultationaVenir", false);
+            }
         } else {
             request.setAttribute("Client", null);
         }

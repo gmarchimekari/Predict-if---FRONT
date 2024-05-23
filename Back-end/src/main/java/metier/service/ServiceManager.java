@@ -357,7 +357,7 @@ public class ServiceManager {
             ex.printStackTrace();
             JpaUtil.annulerTransaction();
             res = false;
-             System.out.println("Ne peut pas créér cette consultation");
+            System.out.println("Ne peut pas créér cette consultation");
         }
         finally {
             JpaUtil.fermerContextePersistance();

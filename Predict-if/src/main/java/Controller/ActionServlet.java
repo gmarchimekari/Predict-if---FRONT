@@ -5,18 +5,24 @@ package Controller;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Action.InformationConsultationEnCoursAction;
 import Action.AfficherMenuClientAction;
 import Action.AfficherMenuEmployeAction;
 import Action.AuthentifierUtilisateurAction;
 import Action.CommencerConsultationAction;
+import Action.InformationConsultationEnCoursAction;
 import Action.DeconnexionAction;
+import Action.GenererPredictionAction;
 import Action.InscrireUtilisateurAction;
 import Action.PrendreRDVAction;
 import Action.TerminerConsultationAction;
+import Serialisation.InformationConsultationEnCoursSerialisation;
 import Serialisation.ConsultationSerialisation;
+import Serialisation.GenererPredictionSerialisation;
 import Serialisation.MenuClientSerialisation;
 import Serialisation.MenuEmployeSerialisation;
 import Serialisation.ProfilUtilisateurSerialisation;
+import Serialisation.TerminerConsultationSerialisation;
 import dao.JpaUtil;
 import java.io.IOException;
 import java.text.ParseException;
@@ -121,13 +127,24 @@ public class ActionServlet extends HttpServlet {
             case "commencerConsultation":
                 System.out.println("commencer consultationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
                 new CommencerConsultationAction(service).execute(request);
-                //new MenuEmployeSerialisation().serialise(request, response);
+                break;
+                       
+            case "consultationEnCours":
+                System.out.println("consultation en coursssssssssssssssss");
+                new InformationConsultationEnCoursAction(service).execute(request);
+                new InformationConsultationEnCoursSerialisation().serialise(request, response);
                 break;
                 
             case "terminerConsultation":
                 System.out.println("terminer consultationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
                 new TerminerConsultationAction(service).execute(request);
-                //new MenuEmployeSerialisation().serialise(request, response);
+                new TerminerConsultationSerialisation().serialise(request, response);
+                break;
+                
+            case "genererPrediction":                                
+                System.out.println("generer predictionnnnnnnnnnnnnn");
+                new GenererPredictionAction(service).execute(request);
+                new GenererPredictionSerialisation().serialise(request, response);
                 break;
                 
             default:

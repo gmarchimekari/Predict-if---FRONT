@@ -1,10 +1,6 @@
 function verifierFormulaire() {
   // Récupération des valeurs des champs
-  var nom = $("#champ-nom").val();
-  var prenom = $("#champ-prenom").val();
   var dateNaissance = $("#champ-date-naissance").val();
-  var rue = $("#champ-rue").val();
-  var ville = $("#champ-ville").val();
   var numeroTel = $("#champ-numero-tel").val();
   var mail = $("#champ-mail").val();
   var motDePasse = $("#champ-mot-de-passe").val();

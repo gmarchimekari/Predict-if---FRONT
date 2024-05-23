@@ -31,14 +31,17 @@ public class AfficherMenuEmployeAction extends Action {
         if(employeId != null) {
             Employe employe = service.trouverEmployeParId(employeId);
             request.setAttribute("Employe", employe);
-            Consultation consultation = employe.getConsultationenCours();
+            Consultation consultationAvenir = employe.getConsultationenCours();
+            if(consultationAvenir.getCommentaire() != null) {
+                consultationAvenir = null;
+            }
             
-            if(consultation != null) {
+            if(consultationAvenir != null) {
                 request.setAttribute("consultationOk", true);
-                request.setAttribute("Consultation", consultation);
-                request.setAttribute("Client", consultation.getClient());
-                request.setAttribute("Medium", consultation.getMedium());
-                request.setAttribute("listeConsultationsClient", consultation.getClient().getListeRdv());
+                request.setAttribute("Consultation", consultationAvenir);
+                request.setAttribute("Client", consultationAvenir.getClient());
+                request.setAttribute("Medium", consultationAvenir.getMedium());
+                request.setAttribute("listeConsultationsClient", consultationAvenir.getClient().getListeRdv());
             } else {
                 request.setAttribute("consultationOk", false);
             }

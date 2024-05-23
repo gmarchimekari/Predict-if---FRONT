@@ -16,9 +16,9 @@ import metier.service.ServiceManager;
  *
  * @author dhabib
  */
-public class CommencerConsultationAction extends Action {
+public class InformationConsultationEnCoursAction extends Action {
 
-    public CommencerConsultationAction(ServiceManager service) {
+    public InformationConsultationEnCoursAction(ServiceManager service) {
         super(service);
     }
 
@@ -31,9 +31,7 @@ public class CommencerConsultationAction extends Action {
         if(employeId != null) {
             Employe employe = service.trouverEmployeParId(employeId);
             request.setAttribute("Employe", employe);
-
-            Consultation consultation = employe.getConsultationenCours();
-            service.demarrerConsultation(consultation.getId());
+            
         } else {
             request.setAttribute("Employe", null);
         }

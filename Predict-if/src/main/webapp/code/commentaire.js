@@ -7,7 +7,7 @@ $(document).ready(function () {
       method: "POST",
       data: {
         todo: "terminerConsultation",
-        commentaire: commentaire,
+        commentaire: commentaire
       },
     })
       .done(function (response) {

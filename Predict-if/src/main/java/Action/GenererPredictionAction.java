@@ -6,8 +6,10 @@
 package Action;
 
 import java.text.ParseException;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import metier.model.Client;
 import metier.model.Consultation;
 import metier.model.Employe;
 import metier.service.ServiceManager;
@@ -16,9 +18,9 @@ import metier.service.ServiceManager;
  *
  * @author dhabib
  */
-public class CommencerConsultationAction extends Action {
+public class GenererPredictionAction extends Action {
 
-    public CommencerConsultationAction(ServiceManager service) {
+    public GenererPredictionAction(ServiceManager service) {
         super(service);
     }
 
@@ -31,12 +33,18 @@ public class CommencerConsultationAction extends Action {
         if(employeId != null) {
             Employe employe = service.trouverEmployeParId(employeId);
             request.setAttribute("Employe", employe);
-
-            Consultation consultation = employe.getConsultationenCours();
-            service.demarrerConsultation(consultation.getId());
+            Client client = employe.getConsultationenCours().getClient();
+            
+            int amour = Integer.parseInt(request.getParameter("amour"));
+            int sante = Integer.parseInt(request.getParameter("sante"));
+            int travail = Integer.parseInt(request.getParameter("travail"));
+            
+            List<String> predictions = service.recupererPredictions(client, amour, sante, travail);
+            request.setAttribute("predictions", predictions);
         } else {
             request.setAttribute("Employe", null);
         }
+
     }
     
 }
