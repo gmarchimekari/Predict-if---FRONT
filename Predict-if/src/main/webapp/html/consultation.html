@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consultation</title>
+    <link rel="stylesheet" type="text/css" href="../style/consultation.css" />
+    <link rel="stylesheet" type="text/css" href="../style/index.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+  <body>
+    <header id="header-consultation" class="row">
+      <p id="titre-page">Predict'if</p>
+    </header>
+    <div id="container-consultation" class="column">
+      <div id="consult-en-court" class="row">
+        <p><strong>Consultation en cours...</strong></p>
+        <button id="btn-achever-consult">Achever consultation</button>
+      </div>
+      <div id="medium-incarne">
+        <div id="presentation-medium" class="row">
+          <div class="column" id="denom-div">
+            <p><strong>Dénomination :</strong></p>
+            <input id="denomination-medium" type="text" readonly />
+          </div>
+          <div class="column" id="genre-div">
+            <p><strong>Genre :</strong></p>
+            <input id="genre-medium" type="text" readonly />
+          </div>
+          <div class="column" id="support-div">
+            <p><strong>Support :</strong></p>
+            <input id="support-medium" type="text" readonly />
+          </div>
+        </div>
+        <div class="row" id="infos-clients-aides">
+          <div id="infos-clients" class="column">
+            <p><strong>Infos clients :</strong></p>
+            <input id="nom-prenom-client" type="text" readonly />
+            <label for="signe-zodiac"><strong>SZ: </strong></label>
+            <input id="signe-zodiac" type="text" readonly />
+            <label for="signe-chinois"><strong>SC: </strong></label>
+            <input id="signe-chinois" type="text" readonly />
+            <label for="animal-totem"><strong>AT: </strong></label>
+            <input id="animal-totem" type="text" readonly />
+            <p>Couleur :</p>
+            <input id="couleur" type="text" readonly />
+          </div>
+          <div id="aides" class="column">
+            <p><strong>Besoin d'aide ?</strong></p>
+            <div class="row">
+              <label for="amour-input">Amour :</label>
+              <input id="amour-input" type="number" min="1" max="4" required />
+            </div>
+            <div class="row">
+              <label for="sante-input">Santé :</label>
+              <input id="sante-input" type="number" min="1" max="4" required />
+            </div>
+            <div class="row">
+              <label for="travail-input">Travail :</label>
+              <input
+                id="travail-input"
+                type="number"
+                min="1"
+                max="4"
+                required
+              />
+            </div>
+            <button id="generer-predictions">Générer prédictions</button>
+          </div>
+        </div>
+      </div>
+      <div class="prediction-container">
+        <div class="prediction-box">
+          <div class="prediction-header amour">Amour</div>
+          <div class="prediction-content" id="prediction-amour">
+            “.........”
+          </div>
+        </div>
+        <div class="prediction-box">
+          <div class="prediction-header sante">Santé</div>
+          <div class="prediction-content" id="prediction-sante">
+            “.........”
+          </div>
+        </div>
+        <div class="prediction-box">
+          <div class="prediction-header travail">Travail</div>
+          <div class="prediction-content" id="prediction-travail">
+            “.........”
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../code/consultation.js"></script>
+  </body>
+</html>
