@@ -1,0 +1,14 @@
+#div-commentaire {
+  display: flex;
+  flex-direction: column;
+}
+
+#comentaire-area {
+  width: 50%;
+}
+
+#btn-terminer-consultation {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 50%;
+}
