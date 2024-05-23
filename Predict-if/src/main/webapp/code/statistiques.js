@@ -98,17 +98,17 @@ function buildRepartitionChart(container, graphData) {
       type: "column",
     },
     title: {
-      text: "Répartition des clients par employé",
+      text: "Nombre d'appels par client",
     },
     xAxis: {
       title: {
-        text: "Employés",
+        text: "Clients",
       },
-      categories: graphData.nomEmploye,
+      categories: graphData.nomClient,
     },
     yAxis: {
       title: {
-        text: "Nb clients",
+        text: "Nb d'appels",
       },
     },
     legend: {
@@ -118,7 +118,7 @@ function buildRepartitionChart(container, graphData) {
       enabled: false,
     },
     series: [
-      { name: "Répartition des clients : ", data: graphData.repartitionClient },
+      { name: "Répartition du client : ", data: graphData.repartitionClient },
     ],
   });
 }
