@@ -27,6 +27,17 @@ public class ProfilUtilisateurSerialisation extends Serialisation{
         JsonObject container = new JsonObject();
         Gson gsonBuilder = new GsonBuilder().create();
         if(request.getAttribute("Utilisateur") instanceof Client) {
+            String action = (String) request.getAttribute("action");
+            String coords = "pas null";
+            if(action.equals("inscription")) {
+                coords = (String) request.getAttribute("coords");
+                if(coords.equals("null")) {
+                    container.addProperty("coords", "non valide");
+                } else if(coords.equals("pas null")) {
+                    container.addProperty("coords", "valide");
+                }
+            }
+            
             Client client = (Client) request.getAttribute("Utilisateur");
             JsonObject jsonUser = new JsonObject(); 
             jsonUser.addProperty("id", client.getId());
@@ -39,19 +50,26 @@ public class ProfilUtilisateurSerialisation extends Serialisation{
             jsonUser.addProperty("numTel", client.getNumTel());
             jsonUser.addProperty("latitude", client.getLatitude());
             jsonUser.addProperty("longitude", client.getLongitude());
-            
-            JsonObject jsonAstral = new JsonObject();
-            ProfilAstral profilAstral = client.getProfilAstral();
-            jsonAstral.addProperty("couleur", profilAstral.getCouleur());
-            jsonAstral.addProperty("signeZodiaque", profilAstral.getSigneZodiaque());
-            jsonAstral.addProperty("signeChinois", profilAstral.getSigneChinois());
-            jsonAstral.addProperty("animalTotem", profilAstral.getAnimalTotem());
-            gsonBuilder.toJson(jsonAstral);
-            
-            jsonUser.add("profilAstral", jsonAstral);
+            if(action.equals("inscription") && !coords.equals("null")) {
+                JsonObject jsonAstral = new JsonObject();
+                ProfilAstral profilAstral = client.getProfilAstral();
+                jsonAstral.addProperty("couleur", profilAstral.getCouleur());
+                System.out.println("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                jsonAstral.addProperty("signeZodiaque", profilAstral.getSigneZodiaque());
+                jsonAstral.addProperty("signeChinois", profilAstral.getSigneChinois());
+                jsonAstral.addProperty("animalTotem", profilAstral.getAnimalTotem());
+                gsonBuilder.toJson(jsonAstral);
+
+                jsonUser.add("profilAstral", jsonAstral);
+            }
             
             gsonBuilder.toJson(jsonUser);
-            container.addProperty("operationOk", true);
+            if(coords.equals("null")) {
+                container.addProperty("operationOk", false);
+            } else {
+                container.addProperty("operationOk", true);
+            }
+            
             container.addProperty("typeUtilisateur", "client");
             container.add("utilisateur", jsonUser);
         } else if(request.getAttribute("Utilisateur") instanceof Employe) {

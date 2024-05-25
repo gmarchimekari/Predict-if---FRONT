@@ -37,7 +37,7 @@ public class AfficherMenuClientAction extends Action {
             Client client = service.trouverClientParId(clientId);
             request.setAttribute("Client", client);
             List<Consultation> consultationHistorique = client.getListeRdv();
-            if(consultationHistorique.get(consultationHistorique.size() - 1).getCommentaire() == null){
+            if(consultationHistorique.size() != 0 && consultationHistorique.get(consultationHistorique.size() - 1).getCommentaire() == null){
                 request.setAttribute("consultationaVenir", true);
             } else{
                 request.setAttribute("consultationaVenir", false);

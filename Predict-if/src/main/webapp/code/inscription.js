@@ -41,6 +41,7 @@ function verifierFormulaire() {
 
 $(document).ready(function () {
     console.log("wesh la zoneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+    console.log(response)
   $("#bouton-inscription").on("click", function () {
     // Fonction appelée lors du clic sur le bouton
 
@@ -86,12 +87,16 @@ $(document).ready(function () {
             window.location.href = "connexion.html";
           }
         } else {
-          // si l'inscription a échouée
-          alert("Erreur lors de l'inscription, veuillez réessayer.");
-          // remettre les valeurs par défaut des champs
-          $("#formulaire-inscription :input").each(function () {
-            $(this).val("");
-          });
+            if(response.coords === "non valide") {
+                alert("Veuillez saisir une addresse valide");
+            } else {
+                // si l'inscription a échouée
+                alert("Erreur lors de l'inscription, veuillez réessayer.");
+                // remettre les valeurs par défaut des champs
+                $("#formulaire-inscription :input").each(function () {
+                  $(this).val("");
+                });
+            }
         }
       })
       .fail(function (error) {

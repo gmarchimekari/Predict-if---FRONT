@@ -36,6 +36,7 @@ public class StatistiquesSerialisation extends Serialisation {
             container.addProperty("repartitionClients", "null");
             container.addProperty("clients", "null");
         } else {
+            System.out.println("Hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
             Map<String, Integer> repartitionClients = (Map<String, Integer>) request.getAttribute("repartitionClients");
             JsonArray jsonListeRepartitionClients = new JsonArray();
             
@@ -67,7 +68,6 @@ public class StatistiquesSerialisation extends Serialisation {
                 jsonClient.addProperty("prenom", c.getClient().getPrenom());
                 jsonClient.addProperty("longitude", c.getClient().getLongitude());
                 jsonClient.addProperty("latitude", c.getClient().getLatitude());
-                jsonClient.addProperty("longitude", c.getClient().getLongitude());
 
                 gsonBuilder.toJson(jsonClient);
                 jsonListeConsultationsClients.add(jsonClient);
@@ -93,7 +93,7 @@ public class StatistiquesSerialisation extends Serialisation {
         gsonBuilder.toJson(jsonListeNbConsultations);
         container.add("nbConsultations", jsonListeNbConsultations);
         
-        List<Medium> lesMediums = (List<Medium>) (Medium) request.getAttribute("topFiveMedium");
+        List<Medium> lesMediums = (List<Medium>) request.getAttribute("topFiveMedium");
         for (Medium m : lesMediums) {
             JsonObject jsonMedium = new JsonObject();
 

@@ -25,6 +25,8 @@ public class AuthentifierUtilisateurAction extends Action {
     @Override
     public void execute(HttpServletRequest request){
         
+        request.setAttribute("action", "connexion");
+        
         String login = (String) request.getParameter("login");
         String password = (String) request.getParameter("password");
         

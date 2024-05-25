@@ -16,12 +16,14 @@ import Action.GenererPredictionAction;
 import Action.InscrireUtilisateurAction;
 import Action.PrendreRDVAction;
 import Action.TerminerConsultationAction;
+import Action.getStatistiquesAction;
 import Serialisation.InformationConsultationEnCoursSerialisation;
 import Serialisation.ConsultationSerialisation;
 import Serialisation.GenererPredictionSerialisation;
 import Serialisation.MenuClientSerialisation;
 import Serialisation.MenuEmployeSerialisation;
 import Serialisation.ProfilUtilisateurSerialisation;
+import Serialisation.StatistiquesSerialisation;
 import Serialisation.TerminerConsultationSerialisation;
 import dao.JpaUtil;
 import java.io.IOException;
@@ -120,8 +122,8 @@ public class ActionServlet extends HttpServlet {
                 
             case "getStatistiques":
                 System.out.println("statistiqueeeeeeeeeeeeeeeeeeeees");
-                new DeconnexionAction(service).execute(request);
-                //new MenuEmployeSerialisation().serialise(request, response);
+                new getStatistiquesAction(service).execute(request);
+                new StatistiquesSerialisation().serialise(request, response);
                 break;
                 
             case "commencerConsultation":

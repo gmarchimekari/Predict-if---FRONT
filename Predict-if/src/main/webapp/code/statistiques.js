@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $.ajax({
-    url: "./ActionServlet",
+    url: "../ActionServlet",
     method: "GET",
     data: {
       todo: "getStatistiques",
@@ -8,6 +8,7 @@ $(document).ready(function () {
     dataType: "json",
   })
     .done(function (response) {
+        console.log(response)
       if (response.nbConsultatations) {
         // affichage du nombre de consultations par médium
         let ChartData = {

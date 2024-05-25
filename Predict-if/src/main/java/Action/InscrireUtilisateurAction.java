@@ -5,12 +5,14 @@
  */
 package Action;
 
+import com.google.maps.model.LatLng;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import metier.model.Client;
 import metier.service.ServiceManager;
+import util.GeoNetApi;
 
 /**
  *
@@ -46,15 +48,28 @@ public class InscrireUtilisateurAction extends Action {
         Client client = new Client(nom, prenom, mail, adressePostale, dateNaissance, numeroTel);
         client.setMotDePasse(motDePasse);
         
-        Boolean result = service.inscrireClient(client);
+        request.setAttribute("action", "inscription");
         
-        if (result){
-            request.setAttribute("Utilisateur", client);
-            System.out.println("inscription ok");
+        LatLng coords = GeoNetApi.getLatLng(client.getAdressePostale());
+        if (coords != null) {
+            Boolean result = service.inscrireClient(client);
+            if (result){
+                request.setAttribute("Utilisateur", client);
+                request.setAttribute("coords", "pas null");
+                System.out.println("inscription ok");
+            } else {
+                request.setAttribute("Utilisateur", null);
+                System.out.println("inscription pas ok");
+            }
         } else {
-            request.setAttribute("Utilisateur", null);
+            request.setAttribute("Utilisateur", client);
+            request.setAttribute("coords", "null");
             System.out.println("inscription pas ok");
         }
+        
+        
+        
+        
         
         
     }
