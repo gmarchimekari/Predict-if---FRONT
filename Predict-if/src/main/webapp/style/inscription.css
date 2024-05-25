@@ -1,0 +1,101 @@
+body {
+  background-image: url("../images/fond-inscription.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Fixer le fond pour qu'il ne se déplace pas */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  border-radius: 10px;
+  text-align: center;
+  width: 50%;
+  max-width: 600px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 300px;
+  height: auto;
+  /* il est dans le fond en dessous des autres elements*/
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  background-color: rgba(0, 0, 0);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Flexbox pour chaque ligne */
+.row {
+  display: flex;
+  justify-content: flex-end; /* Aligne les inputs à droite */
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.row label {
+  font-weight: bold;
+  margin-right: 10px;
+  min-width: 150px;
+}
+
+.row input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.button {
+  width: 50%;
+  padding: 10px;
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.button:hover {
+  background-color: #3700b3;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label-input-row {
+  height: 50px;
+  width: 90%;
+}
+
+.etoile {
+  position: absolute;
+  width: 400px;
+  right: 15px;
+  /* orientation */
+  transform: rotate(-60deg);
+}

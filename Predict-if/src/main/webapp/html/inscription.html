@@ -2,81 +2,101 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Inscrption</title>
+    <title>Inscription</title>
     <!-- Librairie Javascript: jQuery (v3.4.1) -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- fichiers css -->
+    <link rel="stylesheet" type="text/css" href="../style/index.css" />
+    <link rel="stylesheet" type="text/css" href="../style/inscription.css" />
   </head>
   <body>
-    <h1>Formulaire d'inscription</h1>
-
-    <form id="formulaire-inscription">
-      <label for="champ-nom">NOM</label>
-      <input type="text" id="champ-nom" name="nom" placeholder="DOE" />
-      <br />
-      <label for="champ-prenom">PRENOM</label>
-      <input type="text" id="champ-prenom" name="prenom" placeholder="John" />
-      <br />
-      <label for="champ-date-naissance">Date de Naissance</label>
-      <input
-        type="date"
-        id="champ-date-naissance"
-        name="dateNaissance"
-        value="2022-09-20"
-      />
-      <br />
-      <label for="champ-rue">Rue</label>
-      <input
-        type="text"
-        id="champ-rue"
-        name="rue"
-        placeholder="12 Rue du Chêne"
-      />
-      <br />
-      <label for="champ-ville">Ville</label>
-      <input
-        type="text"
-        id="champ-ville"
-        name="ville"
-        placeholder="VILLEURBANNE"
-      />
-      <br />
-      <label for="champ-numero-tel">N° Téléphone</label>
-      <input
-        type="text"
-        id="champ-numero-tel"
-        name="numeroTel"
-        placeholder="07 62 31 24 00"
-      />
-      <br />
-      <label for="champ-mail">Mail</label>
-      <input
-        type="email"
-        id="champ-mail"
-        name="mail"
-        placeholder="john.doe@insa-lyon.fr"
-      />
-      <br />
-      <label for="champ-mot-de-passe">Mot de passe</label>
-      <input
-        type="password"
-        id="champ-mot-de-passe"
-        name="motDePasse"
-        placeholder="*********"
-      />
-      <br />
-      <label for="champ-confirmation-mot-de-passe">Confirmation</label>
-      <input
-        type="password"
-        id="champ-confirmation-mot-de-passe"
-        name="confirmationMotDePasse"
-        placeholder="*********"
-      />
-      <br />
-      <button type="submit" id="bouton-inscription" class="button">
-        S'inscrire
-      </button>
-    </form>
-
+    <img src="../images/logo-predictif.png" alt="Logo" class="logo" />
+    <div class="container">
+      <h1>Formulaire d'inscription</h1>
+      <form id="formulaire-inscription">
+        <div class="row label-input-row">
+          <label for="champ-nom">NOM</label>
+          <input type="text" id="champ-nom" name="nom" placeholder="DOE" />
+        </div>
+        <div class="row label-input-row">
+          <label for="champ-prenom">PRENOM</label>
+          <input
+            type="text"
+            id="champ-prenom"
+            name="prenom"
+            placeholder="John"
+          />
+        </div>
+        <div class="row label-input-row">
+          <label for="champ-date-naissance">Date de Naissance</label>
+          <input
+            type="date"
+            id="champ-date-naissance"
+            name="dateNaissance"
+            value="2022-09-20"
+          />
+        </div>
+        <div class="row label-input-row">
+          <label for="champ-rue">Rue</label>
+          <input
+            type="text"
+            id="champ-rue"
+            name="rue"
+            placeholder="12 Rue du Chêne"
+          />
+        </div>
+        <div class="row label-input-row">
+          <label for="champ-ville">Ville</label>
+          <input
+            type="text"
+            id="champ-ville"
+            name="ville"
+            placeholder="VILLEURBANNE"
+          />
+        </div>
+        <div class="row label-input-row">
+          <label for="champ-numero-tel">N° Téléphone</label>
+          <input
+            type="text"
+            id="champ-numero-tel"
+            name="numeroTel"
+            placeholder="07 62 31 24 00"
+          />
+        </div>
+        <div class="row label-input-row">
+          <label for="champ-mail">Mail</label>
+          <input
+            type="email"
+            id="champ-mail"
+            name="mail"
+            placeholder="john.doe@insa-lyon.fr"
+          />
+        </div>
+        <div class="row label-input-row">
+          <label for="champ-mot-de-passe">Mot de passe</label>
+          <input
+            type="password"
+            id="champ-mot-de-passe"
+            name="motDePasse"
+            placeholder="*********"
+          />
+        </div>
+        <div class="row label-input-row">
+          <label for="champ-confirmation-mot-de-passe">Confirmation</label>
+          <input
+            type="password"
+            id="champ-confirmation-mot-de-passe"
+            name="confirmationMotDePasse"
+            placeholder="*********"
+          />
+        </div>
+        <button type="submit" id="bouton-inscription" class="button">
+          S'inscrire
+        </button>
+      </form>
+    </div>
+    <img src="../images/etoile.png" alt="etoile" class="etoile" />
     <script src="../code/inscription.js"></script>
   </body>
 </html>

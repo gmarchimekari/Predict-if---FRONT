@@ -1,0 +1,115 @@
+body {
+  background-image: url("../images/fond-connexion.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.logo {
+  width: 22%;
+  height: auto;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 300px;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+}
+
+.button {
+  width: 320px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #3700b3;
+}
+
+a {
+  text-decoration: none;
+}
+
+a button {
+  background-color: #03dac5;
+}
+
+a button:hover {
+  background-color: #018786;
+}
+
+.main-background {
+  background-image: url("../images/fond-connexion.webp");
+}
+
+#bouton-connexion {
+  background-color: #4d4d4d;
+  font-weight: bold;
+}
+
+#bouton-connexion:hover {
+  background-color: #3700b3;
+}
+
+#bouton-authentification {
+  background-color: #009d44;
+  font-weight: bold;
+}
+
+#bouton-authentification:hover {
+  background-color: #840070;
+}
+
+.image-decor {
+  position: absolute;
+  width: 250px;
+  height: auto;
+  opacity: 0.5;
+}
+
+#haut-gauche {
+  top: 20px;
+  left: 20px;
+  /* orientation */
+  transform: rotate(-25deg);
+}
+
+#bat-droit {
+  bottom: 20px;
+  right: 20px;
+}
+
+#haut-droit {
+  top: 20px;
+  right: 20px;
+}
+
+#bas-gauche {
+  bottom: 20px;
+  left: 20px;
+}

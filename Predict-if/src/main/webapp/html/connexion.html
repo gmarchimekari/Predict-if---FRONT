@@ -1,31 +1,66 @@
 <!doctype html>
-<html>
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Connexion</title>
     <!-- Librairie Javascript: jQuery (v3.4.1) -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!-- fichier css -->
+    <!-- fichiers css -->
     <link rel="stylesheet" type="text/css" href="../style/index.css" />
+    <link rel="stylesheet" type="text/css" href="../style/connexion.css" />
   </head>
   <body>
-    <h1>Connexion</h1>
-
-    <input type="text" id="champ-login" placeholder="mail@domaine.com" />
-    <br />
-    <input type="password" id="champ-password" placeholder="Mot de passe" />
-    <br />
-    <button id="bouton-connexion" class="button">Connexion</button>
-    <br />
-
-    <a href="inscription.html">
-      <button id="bouton-authentification" class="button">
-        Clique ici pour t'inscrire et tout savoir !
-      </button>
-    </a>
+    <div class="container">
+      <header>
+        <img
+          src="../images/logo-predictif.png"
+          alt="Logo Predict'if"
+          class="logo"
+        />
+      </header>
+      <main>
+        <h1>Connexion</h1>
+        <input type="text" id="champ-login" placeholder="mail@domaine.com" />
+        <br />
+        <input type="password" id="champ-password" placeholder="Mot de passe" />
+        <br />
+        <button id="bouton-connexion" class="button">Connexion</button>
+        <br />
+        <a href="inscription.html">
+          <button id="bouton-authentification" class="button">
+            Clique ici pour t'inscrire et tout savoir !
+          </button>
+        </a>
+      </main>
+    </div>
 
     <!-- Lien vers l'accueil -->
     <!-- <p><a href="../index.html">Retour à la page d'Accueil</a></p> -->
+    <img
+      src="../images/haut-gauche.png"
+      alt="Haut Gauche"
+      class="image-decor"
+      id="haut-gauche"
+    />
+    <img
+      src="../images/bat-droit.png"
+      alt="Bat Droit"
+      class="image-decor"
+      id="bat-droit"
+    />
+    <img
+      src="../images/haut-droit.png"
+      alt="Haut Droit"
+      class="image-decor"
+      id="haut-droit"
+    />
+    <img
+      src="../images/bat-gauche.png"
+      alt="Bas Gauche"
+      class="image-decor"
+      id="bas-gauche"
+    />
 
     <script src="../code/connexion.js"></script>
   </body>
