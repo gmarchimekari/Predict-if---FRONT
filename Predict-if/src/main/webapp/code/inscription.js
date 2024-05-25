@@ -40,8 +40,11 @@ function verifierFormulaire() {
 }
 
 $(document).ready(function () {
+    
+    
     console.log("wesh la zoneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-    console.log(response)
+        console.log("weeeeee")
+
   $("#bouton-inscription").on("click", function () {
     // Fonction appelée lors du clic sur le bouton
 
@@ -79,6 +82,7 @@ $(document).ready(function () {
       dataType: "json",
     })
       .done(function (response) {
+          console.log(response)
         // Fonction appelée en cas d'appel AJAX réussi
         if (response.operationOk) {
           if (response.typeUtilisateur === "client") {
@@ -87,6 +91,7 @@ $(document).ready(function () {
             window.location.href = "connexion.html";
           }
         } else {
+            console.log(response.coords)
             if(response.coords === "non valide") {
                 alert("Veuillez saisir une addresse valide");
             } else {

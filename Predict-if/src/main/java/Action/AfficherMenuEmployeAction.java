@@ -32,7 +32,7 @@ public class AfficherMenuEmployeAction extends Action {
             Employe employe = service.trouverEmployeParId(employeId);
             request.setAttribute("Employe", employe);
             Consultation consultationAvenir = employe.getConsultationenCours();
-            if(consultationAvenir.getCommentaire() != null) {
+            if(consultationAvenir != null && consultationAvenir.getCommentaire() != null) {
                 consultationAvenir = null;
             }
             
