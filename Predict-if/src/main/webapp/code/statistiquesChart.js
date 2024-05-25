@@ -1,5 +1,15 @@
 $(document).ready(function () {
-  $.ajax({
+  
+    
+    $("#menuEmploye").on("click", function () {
+        window.location.href = "../html/menuEmploye.html";
+  });
+    
+    
+    
+    
+    
+    $.ajax({
     url: "../ActionServlet",
     method: "GET",
     data: { todo: "getStatistiques" },

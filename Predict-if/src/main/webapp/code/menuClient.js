@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  // desactivé le click sur le bouton prendre rendez-vous
+    // desactivé le click sur le bouton prendre rendez-vous
   $("#btn-prendre-rendez-vous").hide();
   $("#container-presentation-medium").hide();
 
