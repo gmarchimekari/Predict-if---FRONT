@@ -93,6 +93,7 @@ public class StatistiquesSerialisation extends Serialisation {
         gsonBuilder.toJson(jsonListeNbConsultations);
         container.add("nbConsultations", jsonListeNbConsultations);
         
+        JsonArray jsonListeTop5Medium = new JsonArray();
         List<Medium> lesMediums = (List<Medium>) request.getAttribute("topFiveMedium");
         for (Medium m : lesMediums) {
             JsonObject jsonMedium = new JsonObject();
@@ -100,10 +101,10 @@ public class StatistiquesSerialisation extends Serialisation {
             jsonMedium.addProperty("denomination", m.getDenomination());
 
             gsonBuilder.toJson(jsonMedium);
-            jsonListeNbConsultations.add(jsonMedium);
+            jsonListeTop5Medium.add(jsonMedium);
         }
-        gsonBuilder.toJson(jsonListeNbConsultations);
-        container.add("nbConsultations", jsonListeNbConsultations);
+        gsonBuilder.toJson(jsonListeTop5Medium);
+        container.add("top5", jsonListeTop5Medium);
         
         
         

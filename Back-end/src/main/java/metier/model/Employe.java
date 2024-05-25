@@ -65,6 +65,12 @@ public class Employe {
     }
     
     public Consultation getConsultationenCours(){
+                System.out.println("*****************&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*******************************&&&&&&&&&&&&&&&&&&&&&&747");
+
+        System.out.println(listeConsultation);
+        if(this.listeConsultation.isEmpty()) {
+            return null;
+        }
         Consultation consultationEnCours = this.listeConsultation.get(this.listeConsultation.size()-1);
         return consultationEnCours;
     }

@@ -1,5 +1,5 @@
 body {
-  background-image: url("../images/fond-inscription.jpg");
+  background-image: url("../Images/fond-inscription.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed; /* Fixer le fond pour qu'il ne se déplace pas */

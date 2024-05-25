@@ -1,5 +1,5 @@
 body {
-  background-image: url("../images/fond-connexion.webp");
+  background-image: url("../Images/fond-connexion.webp");
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0;
@@ -64,7 +64,7 @@ a button:hover {
 }
 
 .main-background {
-  background-image: url("../images/fond-connexion.webp");
+  background-image: url("../Images/fond-connexion.webp");
 }
 
 #bouton-connexion {
