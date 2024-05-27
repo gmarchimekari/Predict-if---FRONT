@@ -68,3 +68,66 @@ button a {
 button:hover {
   background-color: #f0f0f0; /* Couleur de fond gris clair */
 }
+
+#services,
+#mediums,
+#temoignages {
+  background-color: rgb(103, 103, 103);
+  margin-right: 10px;
+}
+
+.dropdown {
+  margin-left: 70px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(194, 194, 194);
+  padding: 10px;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../Images/fond-inscription.jpg");
+}
+
+#div-accueil {
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 0px 10px 10px;
+  margin-top: 10px;
+}
+
+.logo {
+  width: 300px;
+  height: auto;
+  top: 20px;
+  left: 20px;
+}
+
+#container-bottom {
+  margin-top: 100px;
+}
+
+#statistics {
+  margin-right: 40px;
+  background-color: black;
+  color: white;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  border: solid 1px white;
+}
+.image-bol {
+  border-radius: 10px;
+  width: 15%;
+}
